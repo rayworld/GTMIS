@@ -39,6 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="T_SysUserRole.cs" />
+    <Compile Include="T_SysUser.cs" />
+    <Compile Include="T_SysRolePremission.cs" />
+    <Compile Include="T_SysPremissionModule.cs" />
+    <Compile Include="T_SysPremission.cs" />
+    <Compile Include="T_SysModule.cs" />
+    <Compile Include="T_SysDept.cs" />
+    <Compile Include="T_SysRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

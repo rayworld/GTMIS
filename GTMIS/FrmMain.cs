@@ -139,13 +139,13 @@ namespace GTMIS
                     }
                     else if (module.ToLower() == ModuleName.edi2.ToString())
                     {
-                        ribbonTabItem1.Visible = true;
-                        ribbonTabItem1.Select();
+                        //ribbonTabItem1.Visible = true;
+                        //ribbonTabItem1.Select();
                     }
                     else if (module.ToLower() == ModuleName.ds9208_镜片.ToString())
                     {
-                        ribbonTabItem3.Visible = true;
-                        ribbonTabItem3.Select();
+                        //ribbonTabItem3.Visible = true;
+                        //ribbonTabItem3.Select();
                     }
                     else
                     {
