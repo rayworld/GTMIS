@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.Framework.Encrypt", "Ra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.Framework.WindowManage", "Ray.Framework.WindowManage\Ray.Framework.WindowManage.csproj", "{730B3AAA-A295-4272-9F96-0D1DAF84C7B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTMIS.Model", "GTMIS.Model\GTMIS.Model.csproj", "{AA1ABE9E-34F8-4C67-BAAE-9E41F8A78679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTMIS.DAL", "GTMIS.DAL\GTMIS.DAL.csproj", "{FEF7086C-1F5B-4A5A-AE0F-0E7CBAC6D0EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +61,14 @@ Global
 		{730B3AAA-A295-4272-9F96-0D1DAF84C7B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{730B3AAA-A295-4272-9F96-0D1DAF84C7B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{730B3AAA-A295-4272-9F96-0D1DAF84C7B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA1ABE9E-34F8-4C67-BAAE-9E41F8A78679}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA1ABE9E-34F8-4C67-BAAE-9E41F8A78679}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA1ABE9E-34F8-4C67-BAAE-9E41F8A78679}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA1ABE9E-34F8-4C67-BAAE-9E41F8A78679}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEF7086C-1F5B-4A5A-AE0F-0E7CBAC6D0EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEF7086C-1F5B-4A5A-AE0F-0E7CBAC6D0EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEF7086C-1F5B-4A5A-AE0F-0E7CBAC6D0EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEF7086C-1F5B-4A5A-AE0F-0E7CBAC6D0EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

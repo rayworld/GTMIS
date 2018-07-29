@@ -89,6 +89,14 @@
     <None Include="SystemUpdate.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GTMIS.DAL\GTMIS.DAL.csproj">
+      <Project>{fef7086c-1f5b-4a5a-ae0f-0e7cbac6d0ef}</Project>
+      <Name>GTMIS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GTMIS.Model\GTMIS.Model.csproj">
+      <Project>{aa1abe9e-34f8-4c67-baae-9e41f8a78679}</Project>
+      <Name>GTMIS.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ray.Framework.AutoUpdate\Ray.Framework.AutoUpdate.csproj">
       <Project>{9d576b9c-3db6-4c49-91ce-029300d3331c}</Project>
       <Name>Ray.Framework.AutoUpdate</Name>
