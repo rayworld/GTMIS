@@ -14,9 +14,9 @@ namespace GTMIS
             InitializeComponent();
         }
 
-        Node rootNode = new Node("湖北")
+        Node rootNode = new Node("中国")
         {
-            Tag = 5,
+            Tag = 1,
             Expanded =true
             
         };
@@ -26,10 +26,12 @@ namespace GTMIS
         
         private void FrmUserManager_Load(object sender, System.EventArgs e)
         {
+            //加载树
             allList = bllSysDept.GetModelList(5000, "", "FOrder ASC");
-
             NodesBind(rootNode);
-            advTree1.Nodes.Add(rootNode);    
+            advTree1.Nodes.Add(rootNode);
+            //加载列表
+            dataGridViewX1.DataSource = bllSysDept.GetList(5000,"","fDeptid");
             
         }
 

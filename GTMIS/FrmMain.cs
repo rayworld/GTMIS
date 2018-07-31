@@ -13,7 +13,13 @@ namespace GTMIS
     {
         public FrmMain()
         {
+            //全屏后不遮挡任务栏
+            this.StartPosition = FormStartPosition.Manual;
             InitializeComponent();
+            //全屏后不遮挡任务栏
+            this.MaximizedBounds = Screen.PrimaryScreen.WorkingArea;
+            //必加，不加也不会实现
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
 
         #region 事件
