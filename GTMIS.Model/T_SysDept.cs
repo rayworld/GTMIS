@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace GTMIS.Model
 {
     //T_SysDept
@@ -17,6 +18,10 @@ namespace GTMIS.Model
         /// FParentID
         /// </summary>		
         public int FParentID { get; set; }
+        /// <summary>
+        /// FOrder
+        /// </summary>		
+        public int FOrder { get; set; }
         /// <summary>
         /// FCreateBy
         /// </summary>		

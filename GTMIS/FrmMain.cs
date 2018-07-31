@@ -223,9 +223,13 @@ namespace GTMIS
         }
 
 
+
         #endregion
 
-
+        private void buttonItem14_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("机构管理", typeof(FrmUserManager));
+        }
     }
     public enum ModuleName
     {

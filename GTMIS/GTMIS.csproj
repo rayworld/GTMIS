@@ -59,6 +59,12 @@
     <Compile Include="FrmMain.designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmUserManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUserManager.Designer.cs">
+      <DependentUpon>FrmUserManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmLogin.resx">
@@ -66,6 +72,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUserManager.resx">
+      <DependentUpon>FrmUserManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -89,6 +98,10 @@
     <None Include="SystemUpdate.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GTMIS.BLL\GTMIS.BLL.csproj">
+      <Project>{3b040744-93a3-4a9b-9763-cd124a7635de}</Project>
+      <Name>GTMIS.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GTMIS.DAL\GTMIS.DAL.csproj">
       <Project>{fef7086c-1f5b-4a5a-ae0f-0e7cbac6d0ef}</Project>
       <Name>GTMIS.DAL</Name>

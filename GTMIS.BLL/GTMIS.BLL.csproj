@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CE751FB5-F7AE-4D45-A6AE-1F7F9A488711}</ProjectGuid>
+    <ProjectGuid>{3B040744-93A3-4A9B-9763-CD124A7635DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ray.Framework.CustomDotNetBar</RootNamespace>
-    <AssemblyName>Ray.Framework.CustomDotNetBar</AssemblyName>
+    <RootNamespace>GTMIS.BLL</RootNamespace>
+    <AssemblyName>GTMIS.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevComponents.DotNetBar2, Version=12.8.0.6, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Huali\bin\Debug\DevComponents.DotNetBar2.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,9 +39,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomAdvTree.cs" />
-    <Compile Include="CustomDesktopAlert.cs" />
+    <Compile Include="BLL_T_SysDept.cs" />
+    <Compile Include="BLL_T_SysModule.cs" />
+    <Compile Include="BLL_T_SysPremission.cs" />
+    <Compile Include="BLL_T_SysPremissionModule.cs" />
+    <Compile Include="BLL_T_SysRole.cs" />
+    <Compile Include="BLL_T_SysRolePremission.cs" />
+    <Compile Include="BLL_T_SysUser.cs" />
+    <Compile Include="BLL_T_SysUserRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GTMIS.DAL\GTMIS.DAL.csproj">
+      <Project>{fef7086c-1f5b-4a5a-ae0f-0e7cbac6d0ef}</Project>
+      <Name>GTMIS.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GTMIS.Model\GTMIS.Model.csproj">
+      <Project>{aa1abe9e-34f8-4c67-baae-9e41f8a78679}</Project>
+      <Name>GTMIS.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

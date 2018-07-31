@@ -39,7 +39,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL_T_SysUserRole.cs" />
+    <Compile Include="DAL_T_SysUser.cs" />
+    <Compile Include="DAL_T_SysRolePremission.cs" />
+    <Compile Include="DAL_T_SysRole.cs" />
+    <Compile Include="DAL_T_SysPremissionModule.cs" />
+    <Compile Include="DAL_T_SysDept.cs" />
+    <Compile Include="DAL_T_SysPremission.cs" />
+    <Compile Include="DAL_T_SysModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GTMIS.Model\GTMIS.Model.csproj">
+      <Project>{aa1abe9e-34f8-4c67-baae-9e41f8a78679}</Project>
+      <Name>GTMIS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ray.Framework.DBUtility\Ray.Framework.DBUtility.csproj">
+      <Project>{154cb011-3414-4ec5-a452-18d8936a17a6}</Project>
+      <Name>Ray.Framework.DBUtility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
