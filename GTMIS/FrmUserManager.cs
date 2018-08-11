@@ -4,6 +4,8 @@ using GTMIS.Model;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using GTMIS.Controls;
+
 
 namespace GTMIS
 {
@@ -31,8 +33,16 @@ namespace GTMIS
             NodesBind(rootNode);
             advTree1.Nodes.Add(rootNode);
             //加载列表
-            dataGridViewX1.DataSource = bllSysDept.GetList(5000,"","fDeptid");
-            
+            //dataGridViewX1.DataSource = bllSysDept.GetList(5000,"","fDeptid");
+            //dataGridViewX1.DataSource = PageData.QueryDataTable(); 
+
+            Pager page1 = new Pager(10, 1, 205)
+            {
+                Dock = System.Windows.Forms.DockStyle.Bottom
+            };
+            panelEx1.Controls.Add(page1);
+
+
         }
 
         /// <summary>
@@ -61,9 +71,9 @@ namespace GTMIS
             }
         }
 
-        private void advTree1_Click(object sender, System.EventArgs e)
+        private void AdvTree1_Click(object sender, System.EventArgs e)
         {
-            MessageBoxEx.Show(advTree1.SelectedNode.Tag.ToString());
+            //MessageBoxEx.Show(advTree1.SelectedNode.Tag.ToString());
         }
     }
 }

@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTMIS.DAL", "GTMIS.DAL\GTMI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTMIS.BLL", "GTMIS.BLL\GTMIS.BLL.csproj", "{3B040744-93A3-4A9B-9763-CD124A7635DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ray.Framework.Validate", "Ray.Framework.Validate\Ray.Framework.Validate.csproj", "{CC9D24C2-B356-4AB5-9E0A-5CE644241E45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{3B040744-93A3-4A9B-9763-CD124A7635DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B040744-93A3-4A9B-9763-CD124A7635DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B040744-93A3-4A9B-9763-CD124A7635DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC9D24C2-B356-4AB5-9E0A-5CE644241E45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC9D24C2-B356-4AB5-9E0A-5CE644241E45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC9D24C2-B356-4AB5-9E0A-5CE644241E45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC9D24C2-B356-4AB5-9E0A-5CE644241E45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -261,6 +261,68 @@ namespace GTMIS.DAL
             //return DbHelperSQL.Query(strSql.ToString());
             return SqlHelper.ExecuteDataTable(conn, strSql.ToString());
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Conn"></param>
+        /// <param name="tableName"></param>
+        /// <param name="primaryKey"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="queryOrder"></param>
+        /// <param name="queryFieldName"></param>
+        /// <param name="queryCondition"></param>
+        /// <param name="queryGroup"></param>
+        /// <returns></returns>
+        public DataTable GetListByPage(string conn,
+            string tableName,
+            string primaryKey,
+            int pageIndex,
+            int pageSize,
+            string queryOrder,
+            string queryFieldName,
+            string queryCondition,
+            string queryGroup)
+        {
+            SqlParameter[] parameters = {
+                    new SqlParameter("@Tables", SqlDbType.VarChar, 255),
+                    new SqlParameter("@PrimaryKey" , SqlDbType.VarChar , 255),
+                    new SqlParameter("@Sort", SqlDbType.VarChar , 255 ),
+                    new SqlParameter("@CurrentPage", SqlDbType.Int),
+                    new SqlParameter("@PageSize", SqlDbType.Int),
+                    new SqlParameter("@Fields", SqlDbType.VarChar, 255),
+                    new SqlParameter("@Filter", SqlDbType.VarChar,1000),
+                    new SqlParameter("@Group" ,SqlDbType.VarChar , 1000 )
+                    };
+            parameters[0].Value = tableName;
+            parameters[1].Value = primaryKey;
+            parameters[2].Value = queryOrder;
+            parameters[3].Value = pageIndex;
+            parameters[4].Value = pageSize;
+            parameters[5].Value = queryFieldName;
+            parameters[6].Value = queryCondition;
+            parameters[7].Value = queryGroup;
+            DataTable dt = SqlHelper.ExecuteDataSet(conn, CommandType.StoredProcedure, "SP_Pagination", parameters).Tables[0];
+
+            return dt;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="queryCondition"></param>
+        /// <returns></returns>
+        public int GetRecCount(string tableName,
+            string queryCondition)
+        {
+            string strSql = " SELECT COUNT(1) FROM " + tableName;
+            if (queryCondition != string.Empty)
+            {
+                strSql += " WHERE " + queryCondition;
+            }
+            return int.Parse(SqlHelper.ExecuteScalar(strSql).ToString());
+        }
     }
 }
 

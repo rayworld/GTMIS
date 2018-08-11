@@ -143,6 +143,10 @@
       <Project>{a67ff111-911f-4035-9441-53c633d2f791}</Project>
       <Name>Ray.Framework.Encrypt</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ray.Framework.Validate\Ray.Framework.Validate.csproj">
+      <Project>{cc9d24c2-b356-4ab5-9e0a-5ce644241e45}</Project>
+      <Name>Ray.Framework.Validate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ray.Framework.WindowManage\Ray.Framework.WindowManage.csproj">
       <Project>{730b3aaa-a295-4272-9f96-0d1daf84c7b5}</Project>
       <Name>Ray.Framework.WindowManage</Name>

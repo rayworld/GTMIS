@@ -155,6 +155,35 @@ namespace GTMIS.BLL
         {
             return GetList("");
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="conn"></param>
+        /// <param name="tableName"></param>
+        /// <param name="primaryKey"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="queryOrder"></param>
+        /// <param name="queryFieldName"></param>
+        /// <param name="queryCondition"></param>
+        /// <param name="queryGroup"></param>
+        /// <returns></returns>
+        public DataTable GetListByPage(string conn,string tableName,string primaryKey,int pageIndex,int pageSize,string queryOrder,string queryFieldName,string queryCondition,string queryGroup)
+        {
+            return dal.GetListByPage(conn,tableName,primaryKey,pageIndex,pageSize,queryOrder,queryFieldName,queryCondition,queryGroup);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="queryCondition"></param>
+        /// <returns></returns>
+        public int GetRecCount(string tableName, string queryCondition)
+        {
+            return dal.GetRecCount(tableName, queryCondition);
+        }
         #endregion
     }
 }
