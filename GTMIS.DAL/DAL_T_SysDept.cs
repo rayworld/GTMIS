@@ -275,8 +275,7 @@ namespace GTMIS.DAL
         /// <param name="queryCondition"></param>
         /// <param name="queryGroup"></param>
         /// <returns></returns>
-        public DataTable GetListByPage(string conn,
-            string tableName,
+        public DataTable GetListByPage(string tableName,
             string primaryKey,
             int pageIndex,
             int pageSize,
@@ -321,7 +320,7 @@ namespace GTMIS.DAL
             {
                 strSql += " WHERE " + queryCondition;
             }
-            return int.Parse(SqlHelper.ExecuteScalar(strSql).ToString());
+            return int.Parse(SqlHelper.ExecuteScalar(conn,strSql).ToString());
         }
     }
 }

@@ -169,9 +169,9 @@ namespace GTMIS.BLL
         /// <param name="queryCondition"></param>
         /// <param name="queryGroup"></param>
         /// <returns></returns>
-        public DataTable GetListByPage(string conn,string tableName,string primaryKey,int pageIndex,int pageSize,string queryOrder,string queryFieldName,string queryCondition,string queryGroup)
+        public DataTable GetListByPage(string tableName,string primaryKey,int pageIndex,int pageSize,string queryOrder,string queryFieldName,string queryCondition,string queryGroup)
         {
-            return dal.GetListByPage(conn,tableName,primaryKey,pageIndex,pageSize,queryOrder,queryFieldName,queryCondition,queryGroup);
+            return dal.GetListByPage(tableName,primaryKey,pageIndex,pageSize,queryOrder,queryFieldName,queryCondition,queryGroup);
         }
 
         /// <summary>

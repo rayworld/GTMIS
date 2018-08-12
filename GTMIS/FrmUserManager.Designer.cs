@@ -1,4 +1,6 @@
-﻿namespace GTMIS
+﻿using GTMIS.Controls;
+
+namespace GTMIS
 {
     partial class FrmUserManager
     {
@@ -28,12 +30,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.advTree1 = new DevComponents.AdvTree.AdvTree();
             this.nodeConnector1 = new DevComponents.AdvTree.NodeConnector();
             this.elementStyle1 = new DevComponents.DotNetBar.ElementStyle();
             this.expandableSplitter1 = new DevComponents.DotNetBar.ExpandableSplitter();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             ((System.ComponentModel.ISupportInitialize)(this.advTree1)).BeginInit();
+            this.panelEx1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.SuspendLayout();
             // 
             // advTree1
@@ -56,7 +62,6 @@
             this.advTree1.Styles.Add(this.elementStyle1);
             this.advTree1.TabIndex = 0;
             this.advTree1.Text = "advTree1";
-            this.advTree1.Click += new System.EventHandler(this.AdvTree1_Click);
             // 
             // nodeConnector1
             // 
@@ -105,6 +110,7 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.dataGridViewX1);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEx1.Location = new System.Drawing.Point(549, 0);
@@ -120,6 +126,25 @@
             this.panelEx1.TabIndex = 2;
             this.panelEx1.Text = "panelEx1";
             // 
+            // dataGridViewX1
+            // 
+            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewX1.Name = "dataGridViewX1";
+            this.dataGridViewX1.RowTemplate.Height = 30;
+            this.dataGridViewX1.Size = new System.Drawing.Size(1145, 705);
+            this.dataGridViewX1.TabIndex = 0;
+            // 
             // FrmUserManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -134,6 +159,8 @@
             this.Text = "FrmUserManager";
             this.Load += new System.EventHandler(this.FrmUserManager_Load);
             ((System.ComponentModel.ISupportInitialize)(this.advTree1)).EndInit();
+            this.panelEx1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -144,5 +171,7 @@
         private DevComponents.DotNetBar.ElementStyle elementStyle1;
         private DevComponents.DotNetBar.ExpandableSplitter expandableSplitter1;
         private DevComponents.DotNetBar.PanelEx panelEx1;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
+
     }
 }
