@@ -23,39 +23,29 @@ namespace GTMIS
         private static string queryGroup = "";
         private static string modelName = "T_SysDept";
         private static string primaryKey = "FDeptId";
+        private static string columnList = "[FDeptId] AS 部门编号,[FDeptName] AS 部门名称 ,[FParentID] AS 上级编号 ,[FOrder] AS 排序 ,[FCreateBy] AS 创建者 ,[FCreateDate] AS 创建时间";
         private static int pageSize = 2;
         private static int pageIndex = 1;
-        private static int recCount = bllSysDept.GetRecCount(modelName, queryCondition);
-
-        private static Pager pager1 = new GTMIS.Controls.Pager(pageSize, pageIndex, recCount)
-        {
-            Dock = System.Windows.Forms.DockStyle.Bottom
-        };
-
-        Node rootNode = new Node("中国")
-        {
-            Tag = 1,
-            Expanded =true            
-        };
+        private static int recCount = 0;
+        private static Pager pager1 = null;
         
         private void FrmUserManager_Load(object sender, System.EventArgs e)
         {
             //加载树
+            Node rootNode = new Node("中国") { Tag = 1, Expanded = true };
             allList = bllSysDept.GetModelList(5000, "", "FOrder ASC");
             NodesBind(rootNode);
             advTree1.Nodes.Add(rootNode);
 
-            //加载列表
-            //dataGridViewX1.DataSource = bllSysDept.GetListByPage(modelName,primaryKey, pageIndex, pageSize, "", null, queryCondition, queryGroup);
-            //dataGridViewX1.Columns[0].HeaderText = "部门编号";
-            //dataGridViewX1.Columns[5].HeaderText = "创建时间";
-            dataGridViewX1.AllowUserToAddRows = false;
-
             //加载分页控件
+            recCount = bllSysDept.GetRecCount(modelName, queryCondition);
+            pager1 = new GTMIS.Controls.Pager(pageSize, pageIndex, recCount){Dock = System.Windows.Forms.DockStyle.Bottom };
             pager1.PageIndexChanged += new System.EventHandler(this.Pager1_PageIndexChanged);
             panelEx1.Controls.Add(pager1);
+
+            //加载列表
             LoadData();
-            
+      
         }
 
         /// <summary>
@@ -71,11 +61,7 @@ namespace GTMIS
 
                 foreach (T_SysDept c in clist)
                 {
-                    Node childNode1 = new Node(c.FDeptName)
-                    {
-                        Tag = c.FDeptID,
-                        Expanded = true
-                    };
+                    Node childNode1 = new Node(c.FDeptName) { Tag = c.FDeptID, Expanded = true };
 
                     NodesBind(childNode1);
 
@@ -89,7 +75,6 @@ namespace GTMIS
             //MessageBoxEx.Show(advTree1.SelectedNode.Tag.ToString());
         }
 
-
         private void Pager1_PageIndexChanged(object sender, System.EventArgs e)
         {
             pageIndex = pager1.PageIndex ; 
@@ -98,8 +83,7 @@ namespace GTMIS
 
         private void LoadData()
         {
-            //pager1.RecCount = bllSysDept.GetRecCount(modelName, queryCondition);
-            dataGridViewX1.DataSource = bllSysDept.GetListByPage(modelName, primaryKey, pageIndex, pageSize, "", null, queryCondition, queryGroup);
+            dataGridViewX1.DataSource = bllSysDept.GetListByPage(modelName, primaryKey, pageIndex, pageSize, "", columnList, queryCondition, queryGroup);
         }
     }
 }
