@@ -158,8 +158,8 @@ namespace GTMIS.DAL
         public bool DeleteList(string FDeptIDlist)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete from T_SysDept ");
-            strSql.Append(" where ID in (" + FDeptIDlist + ")  ");
+            strSql.Append("DELETE FROM T_SysDept ");
+            strSql.Append(" WHERE FDeptID IN (" + FDeptIDlist + ")  ");
             //int rows=DbHelperSQL.ExecuteSql(strSql.ToString());
             int rows = SqlHelper.ExecuteNonQuery(conn, strSql.ToString());
 

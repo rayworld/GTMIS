@@ -6,39 +6,31 @@ namespace GTMIS.Controls
     public partial class Pager : UserControl
     {
         #region 构造函数
-        private Pager()
+        public Pager()
         {
             InitializeComponent();
         }
-
-        public Pager(int pageSize,int pageIndex,int recCount)
-        {
-            InitializeComponent();
-            PageSize = pageSize;
-            PageIndex = pageIndex;
-            RecCount = recCount;
-            RefreshData();
-        }
-
         #endregion
 
         #region 属性
 
-        public int PageSize { get; set; }
+        private int pageSize = 10;
+        private int pageIndex = 1;
+        private int recCount = 0;
+        private int pageCount = 0;
 
-        public int PageIndex { get; set; }
 
-        public int RecCount { get; set; }
+        public int PageSize { get => pageSize; set => pageSize = value; }
+        public int PageIndex { get => pageIndex; set => pageIndex = value; }
+        public int RecCount { get => recCount; set => recCount = value; }
 
-        private int pageCount;
         public int PageCount
         {
             get
             {
-                if (PageSize == 0)
+                if (pageSize == 0)
                 {
-                    pageCount = 0;
-                    throw new DivideByZeroException("每页记录数为0");
+                    return 0;
                 }
                 else
                 {
@@ -52,7 +44,7 @@ namespace GTMIS.Controls
 
         #region 页码变化触发事件
 
-        public event EventHandler PageIndexChanged;
+        public event EventHandler OnPageIndexChanged;
 
         #endregion
 
@@ -65,7 +57,7 @@ namespace GTMIS.Controls
         private void ButtonFirst_Click(object sender, EventArgs e)
         {
             PageIndex = 1;
-            RefreshData();
+            RefreshPager(true);
         }
 
 
@@ -78,7 +70,7 @@ namespace GTMIS.Controls
         {
 
             PageIndex = PageCount;
-            RefreshData();
+            RefreshPager(true);
 
         }
         /// <summary>
@@ -89,7 +81,7 @@ namespace GTMIS.Controls
         private void ButtonPrev_Click(object sender, EventArgs e)
         {
             PageIndex -= 1;
-            RefreshData();
+            RefreshPager(true);
         }
 
         /// <summary>
@@ -100,20 +92,30 @@ namespace GTMIS.Controls
         private void ButtonNext_Click(object sender, EventArgs e)
         {
             PageIndex += 1;
-            RefreshData();
+            RefreshPager(true);
         }
 
 
         #endregion
 
         #region  私有过程
-        private void RefreshData()
+
+        public void RefreshPager(int iCount)
+        {
+            recCount = iCount;
+            RefreshPager(false);
+        }
+
+        private  void RefreshPager(bool callEvent)
         {
             ///this.btnGo.Text = this.JumpText;
             this.LabelPagerState.Text = string.Format("{0}/{1} 页  共 {2} 条记录，每页 {3} 条", PageIndex.ToString(),
                 this.PageCount.ToString(), RecCount.ToString(), PageSize.ToString());
 
-            PageIndexChanged?.Invoke(this, null);//当前分页数字改变时，触发委托事件
+            if(callEvent && OnPageIndexChanged != null)
+            {
+                OnPageIndexChanged(this,null);
+            }            
 
             ButtonFirst.Enabled = true;
             ButtonPrev.Enabled = true;

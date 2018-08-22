@@ -39,7 +39,7 @@
             // 
             this.ButtonFirst.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ButtonFirst.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.ButtonFirst.Location = new System.Drawing.Point(534, 12);
+            this.ButtonFirst.Location = new System.Drawing.Point(16, 12);
             this.ButtonFirst.Name = "ButtonFirst";
             this.ButtonFirst.Size = new System.Drawing.Size(138, 47);
             this.ButtonFirst.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -51,7 +51,7 @@
             // 
             this.ButtonPrev.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ButtonPrev.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.ButtonPrev.Location = new System.Drawing.Point(686, 12);
+            this.ButtonPrev.Location = new System.Drawing.Point(168, 12);
             this.ButtonPrev.Name = "ButtonPrev";
             this.ButtonPrev.Size = new System.Drawing.Size(138, 47);
             this.ButtonPrev.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -63,7 +63,7 @@
             // 
             this.ButtonNext.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ButtonNext.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.ButtonNext.Location = new System.Drawing.Point(838, 12);
+            this.ButtonNext.Location = new System.Drawing.Point(320, 12);
             this.ButtonNext.Name = "ButtonNext";
             this.ButtonNext.Size = new System.Drawing.Size(138, 47);
             this.ButtonNext.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -75,7 +75,7 @@
             // 
             this.ButtonLast.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.ButtonLast.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.ButtonLast.Location = new System.Drawing.Point(990, 12);
+            this.ButtonLast.Location = new System.Drawing.Point(472, 12);
             this.ButtonLast.Name = "ButtonLast";
             this.ButtonLast.Size = new System.Drawing.Size(138, 47);
             this.ButtonLast.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -89,10 +89,11 @@
             // 
             // 
             this.LabelPagerState.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.LabelPagerState.Dock = System.Windows.Forms.DockStyle.Right;
             this.LabelPagerState.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.LabelPagerState.Location = new System.Drawing.Point(21, 12);
+            this.LabelPagerState.Location = new System.Drawing.Point(1248, 0);
             this.LabelPagerState.Name = "LabelPagerState";
-            this.LabelPagerState.Size = new System.Drawing.Size(496, 46);
+            this.LabelPagerState.Size = new System.Drawing.Size(501, 71);
             this.LabelPagerState.TabIndex = 4;
             this.LabelPagerState.Text = "0/0 页  共 0 条记录，每页 0 条";
             this.LabelPagerState.TextAlignment = System.Drawing.StringAlignment.Far;
@@ -107,7 +108,7 @@
             this.Controls.Add(this.ButtonPrev);
             this.Controls.Add(this.ButtonFirst);
             this.Name = "Pager";
-            this.Size = new System.Drawing.Size(1234, 74);
+            this.Size = new System.Drawing.Size(1749, 71);
             this.ResumeLayout(false);
 
         }
