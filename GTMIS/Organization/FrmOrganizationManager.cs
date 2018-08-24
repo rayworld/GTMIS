@@ -74,10 +74,18 @@ namespace GTMIS
         /// </summary>
         private void BindingRootTreeNode()
         {
-            Node rootNode = new Node("中国") { Tag = 1, Expanded = true };
-            allList = bllSysDept.GetModelList(5000, "", "FOrder ASC");
-            NodesBind(rootNode);
-            advTree1.Nodes.Add(rootNode);
+            List<T_SysDept> lSysDept= bllSysDept.GetModelList(5000, "FParentId = 0", "FOrder ASC");
+            if (lSysDept.Count > 0)
+            {
+                foreach (T_SysDept model in lSysDept)
+                {
+                    Node rootNode = new Node(model.FDeptName) { Tag = model.FDeptID, Expanded = true };
+                    allList = bllSysDept.GetModelList(5000, "", "FOrder ASC");
+                    NodesBind(rootNode);
+                    advTree1.Nodes.Add(rootNode);
+                }
+            }
+            CustomDesktopAlert.H2("无数据");
         }
 
         /// <summary>
