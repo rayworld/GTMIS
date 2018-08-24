@@ -96,7 +96,7 @@ namespace GTMIS.DAL
 
             SqlParameter[] parameters = {
                         new SqlParameter("@FDeptID", SqlDbType.Int,4) ,
-                        new SqlParameter("@FDeptName", SqlDbType.NChar,10) ,
+                        new SqlParameter("@FDeptName", SqlDbType.NVarChar,50) ,
                         new SqlParameter("@FParentID", SqlDbType.Int,4) ,
                         new SqlParameter("@FOrder", SqlDbType.Int,4) ,
                         new SqlParameter("@FCreateBy", SqlDbType.NVarChar,50) ,
@@ -321,6 +321,28 @@ namespace GTMIS.DAL
                 strSql += " WHERE " + queryCondition;
             }
             return int.Parse(SqlHelper.ExecuteScalar(conn,strSql).ToString());
+        }
+
+        /// <summary>
+        /// 通过名称查询部门编号
+        /// </summary>
+        /// <param name="deptName">部门名称</param>
+        /// <returns></returns>
+        public int GetDeptIdByName(string deptName)
+        {
+            string strSql = String.Format(" Select FDeptId From T_SysDept Where [FDeptName] = '{0}' ", deptName);
+
+            object obj = SqlHelper.ExecuteScalar(conn, strSql).ToString();
+
+            if (obj != null && !string.IsNullOrEmpty(obj.ToString()))
+            {
+                return int.Parse(obj.ToString());
+            }
+            else
+            {
+                return 0;
+            }
+
         }
     }
 }

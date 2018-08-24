@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace GTMIS
 {
-    public partial class FrmUserManager : Office2007Form
+    public partial class FrmOrganizationManager : Office2007Form
     {
         CheckBox HeaderCheckBox = null;
 
-        public FrmUserManager()
+        public FrmOrganizationManager()
         {
             InitializeComponent();
 
@@ -44,28 +44,112 @@ namespace GTMIS
         private static string primaryKey = "FDeptId";
         private static string columnList = "[FDeptId] AS 部门编号,[FDeptName] AS 部门名称 ,[FParentID] AS 上级编号 ,[FOrder] AS 排序 ,[FCreateBy] AS 创建者 ,[FCreateDate] AS 创建时间";
         private static int pageSize = 50;
+        //private static int maxRecCount = 100;
         
         private void FrmUserManager_Load(object sender, System.EventArgs e)
         {
             //加载树
+            BindingRootTreeNode();
+
+            //加载分页控件
+            pager2.OnPageIndexChanged += new System.EventHandler(this.Pager2_OnPageIndexChanged);
+
+            //加载列表
+            RefreshGridView();
+      
+        }
+
+        #region 树控件
+        /// <summary>
+        /// 刷新树控件
+        /// </summary>
+        private void RefreshTreeView()
+        {
+            advTree1.Nodes.Clear();
+            BindingRootTreeNode();
+        }
+
+        /// <summary>
+        /// 绑定根节点
+        /// </summary>
+        private void BindingRootTreeNode()
+        {
             Node rootNode = new Node("中国") { Tag = 1, Expanded = true };
             allList = bllSysDept.GetModelList(5000, "", "FOrder ASC");
             NodesBind(rootNode);
             advTree1.Nodes.Add(rootNode);
-
-            //加载分页控件
-            //pager1 = new GTMIS.Controls.Pager(){Dock = System.Windows.Forms.DockStyle.Bottom };
-            pager2.OnPageIndexChanged += new System.EventHandler(this.Pager2_PageIndexChanged);
-            //panelEx1.Controls.Add(pager1);
-
-            //加载列表
-            RefreshData();
-      
         }
+
+        /// <summary>
+        /// //递归绑定子区域 
+        /// </summary>
+        /// <param name="childNode"></param>
+        private static void NodesBind(Node childNode)
+        {
+            //lambda 表达式
+            if (allList != null)
+            {
+                clist = allList.Where(r => r.FParentID == int.Parse(childNode.Tag.ToString())).ToList();
+
+                foreach (T_SysDept c in clist)
+                {
+                    Node childNode1 = new Node(c.FDeptName) { Tag = c.FDeptID, Expanded = true };
+
+                    NodesBind(childNode1);
+
+                    childNode.Nodes.Add(childNode1);
+                }
+            }
+        }
+
+        private void AdvTree1_Click(object sender, System.EventArgs e)
+        {
+            //MessageBoxEx.Show(advTree1.SelectedNode.Tag.ToString());
+        }
+
+        #endregion
+
+        #region 分页控件
+        /// <summary>
+        /// 分页事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Pager2_OnPageIndexChanged(object sender, System.EventArgs e)
+        {
+            RefreshGridView();
+            HeaderCheckBox.Checked = false;
+        }
+
+
+        /// <summary>
+        /// 计算记录总数并更新数据源
+        /// </summary>
+        private void RefreshGridView()
+        {
+            pager2.PageSize = pageSize;
+            int iCount = bllSysDept.GetRecCount(modelName, queryCondition);
+            //CustomDesktopAlert.H2(pager2.PageSize.ToString());
+            //if(iCount > maxRecCount)
+            //{
+            //    iCount = maxRecCount;
+            //    columnList = " TOP " + iCount.ToString() + " " + columnList;
+            //}
+            pager2.RefreshPager(iCount);
+            DataGridViewX1.DataSource = bllSysDept.GetListByPage(modelName, primaryKey, pager2.PageIndex, pager2.PageSize, "", columnList, queryCondition, queryGroup);
+            
+        }
+
+
+        #endregion
+
+        #region 列表控件
+
+        #region 选中行
 
         private void HeaderCheckBox_MouseClick(object sender, MouseEventArgs e)
         {
-            HeaderCheckBoxClick((CheckBox)sender);
+            HeaderCheckBox_Click((CheckBox)sender);
         }
 
         /// <summary>
@@ -112,7 +196,7 @@ namespace GTMIS
         /// 
         /// </summary>
         /// <param name="HCheckBox"></param>
-        private void HeaderCheckBoxClick(CheckBox HCheckBox)
+        private void HeaderCheckBox_Click(CheckBox HCheckBox)
         {
             foreach (DataGridViewRow Row in DataGridViewX1.Rows)
             {
@@ -124,53 +208,27 @@ namespace GTMIS
         private void HeaderCheckBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Space)
-                HeaderCheckBoxClick((CheckBox)sender);
+                HeaderCheckBox_Click((CheckBox)sender);
         }
 
+
+        #endregion
+
+        #region 格式化列
         /// <summary>
-        /// //递归绑定子区域 
+        /// 格式化显示内容
         /// </summary>
-        /// <param name="childNode"></param>
-        private static void NodesBind(Node childNode)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewX1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //lambda 表达式
-            if (allList != null)
+            if (e.ColumnIndex == DataGridViewX1.Columns["创建时间"].Index)   //格式化日期
             {
-                clist = allList.Where(r => r.FParentID == int.Parse(childNode.Tag.ToString())).ToList();
-
-                foreach (T_SysDept c in clist)
+                if (e.Value != null)
                 {
-                    Node childNode1 = new Node(c.FDeptName) { Tag = c.FDeptID, Expanded = true };
-
-                    NodesBind(childNode1);
-
-                    childNode.Nodes.Add(childNode1);
+                    e.Value = Convert.ToDateTime(e.Value).ToString("yyyy-MM-dd");
                 }
             }
-        }
-
-        private void AdvTree1_Click(object sender, System.EventArgs e)
-        {
-            //MessageBoxEx.Show(advTree1.SelectedNode.Tag.ToString());
-        }
-
-        private void Pager2_PageIndexChanged(object sender, System.EventArgs e)
-        {
-            RefreshData();
-            HeaderCheckBox.Checked = false;
-        }
-
-        /// <summary>
-        /// 计算记录总数并更新数据源
-        /// </summary>
-        private void RefreshData()
-        {
-            pager2.PageSize = pageSize;
-            int iCount = bllSysDept.GetRecCount(modelName, queryCondition);
-            CustomDesktopAlert.H2(pager2.PageSize.ToString());
-            pager2.RefreshPager(iCount);
-            DataGridViewX1.DataSource = bllSysDept.GetListByPage(modelName, primaryKey, pager2.PageIndex,pager2.PageSize,"", columnList, queryCondition, queryGroup);
-
         }
 
         /// <summary>
@@ -188,6 +246,9 @@ namespace GTMIS
                 DataGridViewX1.Rows[i].HeaderCell.Value = j.ToString();
             }
         }
+        #endregion
+
+        #endregion
 
         #region 删除
         /// <summary>
@@ -216,38 +277,15 @@ namespace GTMIS
                         if (bllSysDept.DeleteList(selectedRows) == true)
                         {
                             CustomDesktopAlert.H2("记录编号" + selectedRows + "删除成功！");
+                            //pager2.PageIndex = 1;
                             //删除事件，要重新计算RecCount
-                            pager2.RecCount = bllSysDept.GetRecCount(modelName, queryCondition);
-                            if (pager2.PageCount == pager2.RecCount / pager2.PageSize && pager2.PageIndex > 1)
-                            {
-                                pager2.PageIndex -= 1;
-                            }
-
-                            RefreshData();
-
-                        };
+                            RefreshGridView();
+                        }                      
                     }
-
                 }
             }
-        }
-        #endregion
-
-        #region 格式化列
-        /// <summary>
-        /// 格式化显示内容
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DataGridViewX1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.ColumnIndex == DataGridViewX1.Columns["创建时间"].Index)   //格式化日期
-            {
-                if (e.Value != null)
-                {
-                    e.Value = Convert.ToDateTime(e.Value).ToString("yyyy-MM-dd");
-                }
-            }
+            //清空全选
+            HeaderCheckBox.Checked = false;
         }
         #endregion
 
@@ -262,7 +300,7 @@ namespace GTMIS
             string queryString = TextBoxX_QueryString.Text;
             queryCondition = string.Format(" [FDeptName] LIKE '%{0}%' ",queryString);
             pager2.PageIndex = 1;
-            RefreshData();
+            RefreshGridView();
         }
 
         /// <summary>
@@ -275,8 +313,93 @@ namespace GTMIS
             TextBoxX_QueryString.Text = "";
             queryCondition = TextBoxX_QueryString.Text;
             pager2.PageIndex = 1;
-            RefreshData();
+            RefreshGridView();
+        }
+
+        #endregion
+
+        #region 编辑
+
+        /// <summary>
+        /// 编辑事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonEdit_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewX1.SelectedRows.Count == 1)
+            {
+                //CustomDesktopAlert.H2(DataGridViewX1.SelectedRows[0].Cells["部门编号"].Value.ToString());
+                int selectedRowId = int.Parse(DataGridViewX1.SelectedRows[0].Cells["部门编号"].Value.ToString());
+                FrmOrganizationDetail frm = new FrmOrganizationDetail
+                {
+                    Deptid = selectedRowId,
+                    StartPosition = FormStartPosition.CenterParent
+                };
+
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    RefreshGridView();
+
+                    RefreshTreeView();
+
+                }
+            }
+            else if (DataGridViewX1.SelectedRows.Count > 1)
+            {
+                CustomDesktopAlert.H2("只能选择一行编辑");
+            }
+            else
+            {
+                CustomDesktopAlert.H2("请先选择要编辑的行");
+            }
+        }
+
+        /// <summary>
+        /// 双击进入编辑状态
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //CustomDesktopAlert.H2(DataGridViewX1.SelectedRows[0].Cells["部门编号"].Value.ToString());
+            int selectedRowId = int.Parse(DataGridViewX1.SelectedRows[0].Cells["部门编号"].Value.ToString());
+            FrmOrganizationDetail frm = new FrmOrganizationDetail
+            {
+                Deptid = selectedRowId,
+                StartPosition = FormStartPosition.CenterParent
+            };
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                RefreshGridView();
+
+                RefreshTreeView();
+
+            }
+
+        }
+
+        #endregion
+
+        #region 新增
+        private void ButtonInsert_Click(object sender, EventArgs e)
+        {
+            FrmOrganizationDetail frm = new FrmOrganizationDetail
+            {
+                Deptid = -1,
+                StartPosition = FormStartPosition.CenterParent
+            };
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                RefreshGridView();
+
+                RefreshTreeView();
+            }
         }
         #endregion
+
+
     }
 }

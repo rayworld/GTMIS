@@ -59,11 +59,17 @@
     <Compile Include="FrmMain.designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmUserManager.cs">
+    <Compile Include="Organization\FrmOrganizationDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmUserManager.Designer.cs">
-      <DependentUpon>FrmUserManager.cs</DependentUpon>
+    <Compile Include="Organization\FrmOrganizationDetail.Designer.cs">
+      <DependentUpon>FrmOrganizationDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Organization\FrmOrganizationManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Organization\FrmOrganizationManager.Designer.cs">
+      <DependentUpon>FrmOrganizationManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Pager.cs">
       <SubType>UserControl</SubType>
@@ -79,8 +85,11 @@
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmUserManager.resx">
-      <DependentUpon>FrmUserManager.cs</DependentUpon>
+    <EmbeddedResource Include="Organization\FrmOrganizationDetail.resx">
+      <DependentUpon>FrmOrganizationDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Organization\FrmOrganizationManager.resx">
+      <DependentUpon>FrmOrganizationManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pager.resx">
       <DependentUpon>Pager.cs</DependentUpon>

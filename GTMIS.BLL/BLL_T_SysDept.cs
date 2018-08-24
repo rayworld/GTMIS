@@ -184,6 +184,16 @@ namespace GTMIS.BLL
         {
             return dal.GetRecCount(tableName, queryCondition);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="deptName"></param>
+        /// <returns></returns>
+        public int GetDeptIdByName(string deptName)
+        {
+            return dal.GetDeptIdByName(deptName);
+        }
         #endregion
     }
 }

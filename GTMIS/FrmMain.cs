@@ -43,6 +43,8 @@ namespace GTMIS
             {
                 this.Close();
             }
+
+            SetMdiForm("机构管理", typeof(FrmOrganizationManager));
         }
 
         /// <summary>
@@ -234,8 +236,10 @@ namespace GTMIS
 
         private void buttonItem14_Click(object sender, EventArgs e)
         {
-            SetMdiForm("机构管理", typeof(FrmUserManager));
+            SetMdiForm("机构管理", typeof(FrmOrganizationManager));
         }
+
+
     }
     public enum ModuleName
     {
