@@ -118,7 +118,7 @@ namespace GTMIS
         private void Pager2_OnPageIndexChanged(object sender, System.EventArgs e)
         {
             RefreshGridView();
-            HeaderCheckBox.Checked = false;
+            //HeaderCheckBox.Checked = false;
         }
 
 
