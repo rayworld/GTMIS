@@ -1,4 +1,4 @@
-﻿namespace GTMIS
+﻿namespace GTMIS.SystemAdmin.Organization
 {
     partial class FrmOrganizationDetail
     {
@@ -150,6 +150,7 @@
             this.TextBoxCreateBy.Border.Class = "TextBoxBorder";
             this.TextBoxCreateBy.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.TextBoxCreateBy.DisabledBackColor = System.Drawing.Color.White;
+            this.TextBoxCreateBy.Enabled = false;
             this.TextBoxCreateBy.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TextBoxCreateBy.ForeColor = System.Drawing.Color.Black;
             this.TextBoxCreateBy.Location = new System.Drawing.Point(156, 145);
@@ -168,6 +169,7 @@
             this.TextBoxCreateDate.Border.Class = "TextBoxBorder";
             this.TextBoxCreateDate.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.TextBoxCreateDate.DisabledBackColor = System.Drawing.Color.White;
+            this.TextBoxCreateDate.Enabled = false;
             this.TextBoxCreateDate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TextBoxCreateDate.ForeColor = System.Drawing.Color.Black;
             this.TextBoxCreateDate.Location = new System.Drawing.Point(156, 185);
@@ -280,7 +282,7 @@
             this.TextBoxOrder.Size = new System.Drawing.Size(317, 26);
             this.TextBoxOrder.TabIndex = 14;
             // 
-            // FrmOrganizationDetail
+            // FrmRoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -299,7 +301,7 @@
             this.DoubleBuffered = true;
             this.EnableGlass = false;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FrmOrganizationDetail";
+            this.Name = "FrmRoleDetail";
             this.Text = "FrmOrganizationDetail";
             this.Load += new System.EventHandler(this.FrmOrganizationDetail_Load);
             this.panelEx1.ResumeLayout(false);

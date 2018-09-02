@@ -263,7 +263,7 @@ namespace GTMIS.DAL
         }
 
         /// <summary>
-        /// 
+        /// 调用分页过程，通用分页
         /// </summary>
         /// <param name="Conn"></param>
         /// <param name="tableName"></param>
@@ -307,13 +307,12 @@ namespace GTMIS.DAL
             return dt;
         }
         /// <summary>
-        /// 
+        /// 得到指定条件下的记录数
         /// </summary>
         /// <param name="tableName"></param>
         /// <param name="queryCondition"></param>
         /// <returns></returns>
-        public int GetRecCount(string tableName,
-            string queryCondition)
+        public int GetRecCount(string tableName, string queryCondition)
         {
             string strSql = " SELECT COUNT(1) FROM " + tableName;
             if (queryCondition != string.Empty)
@@ -324,13 +323,13 @@ namespace GTMIS.DAL
         }
 
         /// <summary>
-        /// 通过名称查询部门编号
+        /// 通过名称查询编号
         /// </summary>
-        /// <param name="deptName">部门名称</param>
+        /// <param name="deptName">实体名称列</param>
         /// <returns></returns>
-        public int GetDeptIdByName(string deptName)
+        public int GetDeptIdByName(string modelNameField)
         {
-            string strSql = String.Format(" Select FDeptId From T_SysDept Where [FDeptName] = '{0}' ", deptName);
+            string strSql = String.Format(" Select FDeptId From T_SysDept Where [FDeptName] = '{0}' ", modelNameField);
 
             object obj = SqlHelper.ExecuteScalar(conn, strSql).ToString();
 
@@ -342,7 +341,6 @@ namespace GTMIS.DAL
             {
                 return 0;
             }
-
         }
     }
 }

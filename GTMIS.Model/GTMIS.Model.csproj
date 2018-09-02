@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="T_SysDictData.cs" />
+    <Compile Include="T_SysDictType.cs" />
     <Compile Include="T_SysUserRole.cs" />
     <Compile Include="T_SysUser.cs" />
     <Compile Include="T_SysRolePremission.cs" />

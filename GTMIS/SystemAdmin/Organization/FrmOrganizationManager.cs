@@ -9,7 +9,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace GTMIS
+namespace GTMIS.SystemAdmin.Organization
 {
     public partial class FrmOrganizationManager : Office2007Form
     {
@@ -85,7 +85,11 @@ namespace GTMIS
                     advTree1.Nodes.Add(rootNode);
                 }
             }
-            CustomDesktopAlert.H2("无数据");
+            else
+            {
+                CustomDesktopAlert.H2("无数据");
+            }
+            
         }
 
         /// <summary>
@@ -126,7 +130,7 @@ namespace GTMIS
         private void Pager2_OnPageIndexChanged(object sender, System.EventArgs e)
         {
             RefreshGridView();
-            //HeaderCheckBox.Checked = false;
+            HeaderCheckBox.Checked = false;
         }
 
 
@@ -406,8 +410,8 @@ namespace GTMIS
                 RefreshTreeView();
             }
         }
-        #endregion
 
+        #endregion
 
     }
 }

@@ -6,22 +6,22 @@ using System.Text;
 
 namespace GTMIS.DAL
 {
-    //T_SysRole
-    public partial class DAL_T_SysRole
+    //T_SysDictType
+    public partial class DAL_T_SysDictType
     {
         //Get connection string 
         private static readonly string conn = SqlHelper.GetConnectionString("GTMIS");
 
-        public bool Exists(int FRoleID)
+        public bool Exists(int FDictTypeId)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select count(1) from T_SysRole");
+            strSql.Append("select count(1) from T_SysDictType");
             strSql.Append(" where ");
-            strSql.Append(" FRoleID = @FRoleID  ");
+            strSql.Append(" FDictTypeId = @FDictTypeId  ");
             SqlParameter[] parameters = {
-                    new SqlParameter("@FRoleID", SqlDbType.Int,4)
+                    new SqlParameter("@FDictTypeId", SqlDbType.Int,4)
             };
-            parameters[0].Value = FRoleID;
+            parameters[0].Value = FDictTypeId;
 
             //return DbHelperSQL.Exists(strSql.ToString(),parameters);
             object obj = SqlHelper.ExecuteScalar(conn, strSql.ToString(), parameters);
@@ -38,27 +38,27 @@ namespace GTMIS.DAL
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public int Add(GTMIS.Model.T_SysRole model)
+        public int Add(GTMIS.Model.T_SysDictType model)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("insert into T_SysRole(");
-            strSql.Append("FRoleName,FRoleDesc,FCreateDate,FCreateBy");
+            strSql.Append("insert into T_SysDictType(");
+            strSql.Append("FTypeName,FParentId,FCreateBy,FCreateDate");
             strSql.Append(") values (");
-            strSql.Append("@FRoleName,@FRoleDesc,@FCreateDate,@FCreateBy");
+            strSql.Append("@FTypeName,@FParentId,@FCreateBy,@FCreateDate");
             strSql.Append(") ");
             strSql.Append(";select @@IDENTITY");
             SqlParameter[] parameters = {
-                        new SqlParameter("@FRoleName", SqlDbType.NVarChar,50) ,
-                        new SqlParameter("@FRoleDesc", SqlDbType.NVarChar,50) ,
-                        new SqlParameter("@FCreateDate", SqlDbType.DateTime) ,
-                        new SqlParameter("@FCreateBy", SqlDbType.NVarChar,50)
+                        new SqlParameter("@FTypeName", SqlDbType.NVarChar,50) ,
+                        new SqlParameter("@FParentId", SqlDbType.Int,4) ,
+                        new SqlParameter("@FCreateBy", SqlDbType.NVarChar,50) ,
+                        new SqlParameter("@FCreateDate", SqlDbType.DateTime)
 
             };
 
-            parameters[0].Value = model.FRoleName;
-            parameters[1].Value = model.FRoleDesc;
-            parameters[2].Value = model.FCreateDate;
-            parameters[3].Value = model.FCreateBy;
+            parameters[0].Value = model.FTypeName;
+            parameters[1].Value = model.FParentId;
+            parameters[2].Value = model.FCreateBy;
+            parameters[3].Value = model.FCreateDate;
 
             //object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
             object obj = SqlHelper.ExecuteScalar(conn, strSql.ToString(), parameters);
@@ -80,31 +80,31 @@ namespace GTMIS.DAL
         /// <summary>
         /// 更新一条数据
         /// </summary>
-        public bool Update(GTMIS.Model.T_SysRole model)
+        public bool Update(GTMIS.Model.T_SysDictType model)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("update T_SysRole set ");
+            strSql.Append("update T_SysDictType set ");
 
-            strSql.Append(" FRoleName = @FRoleName , ");
-            strSql.Append(" FRoleDesc = @FRoleDesc , ");
-            strSql.Append(" FCreateDate = @FCreateDate , ");
-            strSql.Append(" FCreateBy = @FCreateBy  ");
-            strSql.Append(" where FRoleID=@FRoleID ");
+            strSql.Append(" FTypeName = @FTypeName , ");
+            strSql.Append(" FParentId = @FParentId , ");
+            strSql.Append(" FCreateBy = @FCreateBy , ");
+            strSql.Append(" FCreateDate = @FCreateDate  ");
+            strSql.Append(" where FDictTypeId=@FDictTypeId ");
 
             SqlParameter[] parameters = {
-                        new SqlParameter("@FRoleID", SqlDbType.Int,4) ,
-                        new SqlParameter("@FRoleName", SqlDbType.NVarChar,50) ,
-                        new SqlParameter("@FRoleDesc", SqlDbType.NVarChar,50) ,
-                        new SqlParameter("@FCreateDate", SqlDbType.DateTime) ,
-                        new SqlParameter("@FCreateBy", SqlDbType.NVarChar,50)
+                        new SqlParameter("@FDictTypeId", SqlDbType.Int,4) ,
+                        new SqlParameter("@FTypeName", SqlDbType.NVarChar,50) ,
+                        new SqlParameter("@FParentId", SqlDbType.Int,4) ,
+                        new SqlParameter("@FCreateBy", SqlDbType.NVarChar,50) ,
+                        new SqlParameter("@FCreateDate", SqlDbType.DateTime)
 
             };
 
-            parameters[0].Value = model.FRoleID;
-            parameters[1].Value = model.FRoleName;
-            parameters[2].Value = model.FRoleDesc;
-            parameters[3].Value = model.FCreateDate;
-            parameters[4].Value = model.FCreateBy;
+            parameters[0].Value = model.FDictTypeId;
+            parameters[1].Value = model.FTypeName;
+            parameters[2].Value = model.FParentId;
+            parameters[3].Value = model.FCreateBy;
+            parameters[4].Value = model.FCreateDate;
             //int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
             int rows = SqlHelper.ExecuteNonQuery(conn, strSql.ToString(), parameters);
 
@@ -122,16 +122,16 @@ namespace GTMIS.DAL
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        public bool Delete(int FRoleID)
+        public bool Delete(int FDictTypeId)
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("delete from T_SysRole ");
-            strSql.Append(" where FRoleID=@FRoleID");
+            strSql.Append("delete from T_SysDictType ");
+            strSql.Append(" where FDictTypeId=@FDictTypeId");
             SqlParameter[] parameters = {
-                    new SqlParameter("@FRoleID", SqlDbType.Int,4)
+                    new SqlParameter("@FDictTypeId", SqlDbType.Int,4)
             };
-            parameters[0].Value = FRoleID;
+            parameters[0].Value = FDictTypeId;
 
 
             //int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
@@ -150,11 +150,11 @@ namespace GTMIS.DAL
         /// <summary>
         /// 批量删除一批数据
         /// </summary>
-        public bool DeleteList(string FRoleIDlist)
+        public bool DeleteList(string FDictTypeIdlist)
         {
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("DELETE FROM T_SysRole ");
-            strSql.Append(" WHERE FRoleID IN (" + FRoleIDlist + ")  ");
+            strSql.Append("delete from T_SysDictType ");
+            strSql.Append(" where ID in (" + FDictTypeIdlist + ")  ");
             //int rows=DbHelperSQL.ExecuteSql(strSql.ToString());
             int rows = SqlHelper.ExecuteNonQuery(conn, strSql.ToString());
 
@@ -172,36 +172,39 @@ namespace GTMIS.DAL
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
-        public GTMIS.Model.T_SysRole GetModel(int FRoleID)
+        public GTMIS.Model.T_SysDictType GetModel(int FDictTypeId)
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select FRoleID, FRoleName, FRoleDesc, FCreateDate, FCreateBy  ");
-            strSql.Append("  from T_SysRole ");
-            strSql.Append(" where FRoleID=@FRoleID");
+            strSql.Append("select FDictTypeId, FTypeName, FParentId, FCreateBy, FCreateDate  ");
+            strSql.Append("  from T_SysDictType ");
+            strSql.Append(" where FDictTypeId=@FDictTypeId");
             SqlParameter[] parameters = {
-                    new SqlParameter("@FRoleID", SqlDbType.Int,4)
+                    new SqlParameter("@FDictTypeId", SqlDbType.Int,4)
             };
-            parameters[0].Value = FRoleID;
+            parameters[0].Value = FDictTypeId;
 
 
-            GTMIS.Model.T_SysRole model = new GTMIS.Model.T_SysRole();
+            GTMIS.Model.T_SysDictType model = new GTMIS.Model.T_SysDictType();
             //DataSet ds=DbHelperSQL.Query(strSql.ToString(),parameters);
             DataTable dt = SqlHelper.ExecuteDataTable(conn, strSql.ToString(), parameters);
 
             if (dt.Rows.Count > 0)
             {
-                if (dt.Rows[0]["FRoleID"].ToString() != "")
+                if (dt.Rows[0]["FDictTypeId"].ToString() != "")
                 {
-                    model.FRoleID = int.Parse(dt.Rows[0]["FRoleID"].ToString());
+                    model.FDictTypeId = int.Parse(dt.Rows[0]["FDictTypeId"].ToString());
                 }
-                model.FRoleName = dt.Rows[0]["FRoleName"].ToString();
-                model.FRoleDesc = dt.Rows[0]["FRoleDesc"].ToString();
+                model.FTypeName = dt.Rows[0]["FTypeName"].ToString();
+                if (dt.Rows[0]["FParentId"].ToString() != "")
+                {
+                    model.FParentId = int.Parse(dt.Rows[0]["FParentId"].ToString());
+                }
+                model.FCreateBy = dt.Rows[0]["FCreateBy"].ToString();
                 if (dt.Rows[0]["FCreateDate"].ToString() != "")
                 {
                     model.FCreateDate = DateTime.Parse(dt.Rows[0]["FCreateDate"].ToString());
                 }
-                model.FCreateBy = dt.Rows[0]["FCreateBy"].ToString();
 
                 return model;
             }
@@ -219,7 +222,7 @@ namespace GTMIS.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * ");
-            strSql.Append(" FROM T_SysRole ");
+            strSql.Append(" FROM T_SysDictType ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);
@@ -240,7 +243,7 @@ namespace GTMIS.DAL
                 strSql.Append(" top " + Top.ToString());
             }
             strSql.Append(" * ");
-            strSql.Append(" FROM T_SysRole ");
+            strSql.Append(" FROM T_SysDictType ");
             if (strWhere.Trim() != "")
             {
                 strSql.Append(" where " + strWhere);
@@ -251,7 +254,7 @@ namespace GTMIS.DAL
         }
 
         /// <summary>
-        /// 
+        /// 调用分页过程，通用分页
         /// </summary>
         /// <param name="Conn"></param>
         /// <param name="tableName"></param>
@@ -294,14 +297,14 @@ namespace GTMIS.DAL
 
             return dt;
         }
+
         /// <summary>
-        /// 
+        /// 得到指定条件下的记录数
         /// </summary>
         /// <param name="tableName"></param>
         /// <param name="queryCondition"></param>
         /// <returns></returns>
-        public int GetRecCount(string tableName,
-            string queryCondition)
+        public int GetRecCount(string tableName, string queryCondition)
         {
             string strSql = " SELECT COUNT(1) FROM " + tableName;
             if (queryCondition != string.Empty)
@@ -312,13 +315,13 @@ namespace GTMIS.DAL
         }
 
         /// <summary>
-        /// 通过名称查询部门编号
+        /// 通过名称查询编号
         /// </summary>
-        /// <param name="deptName">部门名称</param>
+        /// <param name="deptName">实体名称列</param>
         /// <returns></returns>
-        public int GetRoleIdByName(string roleName)
+        public int GetDeptIdByName(string nameField)
         {
-            string strSql = String.Format(" Select FRoleId From T_SysRole Where [FRoleName] = '{0}' ", roleName);
+            string strSql = String.Format(" Select FDeptId From T_SysDept Where [FDeptName] = '{0}' ", nameField);
 
             object obj = SqlHelper.ExecuteScalar(conn, strSql).ToString();
 
@@ -330,7 +333,7 @@ namespace GTMIS.DAL
             {
                 return 0;
             }
-
         }
     }
 }
+

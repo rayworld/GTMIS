@@ -5,6 +5,9 @@ using Ray.Framework.WindowManage;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using GTMIS.SystemAdmin.Role;
+using GTMIS.SystemAdmin.Organization;
+using GTMIS.SystemAdmin.Dict;
 
 
 namespace GTMIS
@@ -34,17 +37,22 @@ namespace GTMIS
             this.ribbonControl1.TitleText = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "AppName");
             //获取窗口样式
             GetStyleSetting();
-            LoadModule();
+            //LoadModule();
             FrmLogin login = new FrmLogin();
             if (login.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
+
             }
             else
             {
                 this.Close();
             }
 
-            SetMdiForm("机构管理", typeof(FrmOrganizationManager));
+            //SetMdiForm("机构管理", typeof(FrmOrganizationManager));
+            //SetMdiForm("权限管理", typeof(FrmRoleManager));
+            //SetMdiForm("权限管理", typeof(FrmTestManager));
+
+            SetMdiForm("数据字典", typeof(FrmDictManager));
         }
 
         /// <summary>
@@ -132,41 +140,41 @@ namespace GTMIS
 
         #region 私有过程
 
-        private void LoadModule()
-        {
-            string myModules = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
-            if (!string.IsNullOrWhiteSpace( myModules))
-            {
-                string[] myModule = myModules.Split(';');
-                foreach (string module in myModule)
-                {
-                    if (module.ToLower() == ModuleName.edi.ToString())
-                    {
-                        ribbonTabItem2.Visible = true;
-                        ribbonTabItem2.Select();
-                    }
-                    else if (module.ToLower() == ModuleName.edi2.ToString())
-                    {
-                        //ribbonTabItem1.Visible = true;
-                        //ribbonTabItem1.Select();
-                    }
-                    else if (module.ToLower() == ModuleName.ds9208_镜片.ToString())
-                    {
-                        //ribbonTabItem3.Visible = true;
-                        //ribbonTabItem3.Select();
-                    }
-                    else
-                    {
-                        CustomDesktopAlert.H2(module.ToLower() + "不能识别的应用模块！");
-                    }
-                }
+        //private void LoadModule()
+        //{
+        //    string myModules = ConfigHelper.ReadValueByKey(ConfigHelper.ConfigurationFile.AppConfig, "Modules");
+        //    if (!string.IsNullOrWhiteSpace( myModules))
+        //    {
+        //        string[] myModule = myModules.Split(';');
+        //        foreach (string module in myModule)
+        //        {
+        //            if (module.ToLower() == ModuleName.edi.ToString())
+        //            {
+        //                ribbonTabItem2.Visible = true;
+        //                ribbonTabItem2.Select();
+        //            }
+        //            else if (module.ToLower() == ModuleName.edi2.ToString())
+        //            {
+        //                //ribbonTabItem1.Visible = true;
+        //                //ribbonTabItem1.Select();
+        //            }
+        //            else if (module.ToLower() == ModuleName.ds9208_镜片.ToString())
+        //            {
+        //                //ribbonTabItem3.Visible = true;
+        //                //ribbonTabItem3.Select();
+        //            }
+        //            else
+        //            {
+        //                CustomDesktopAlert.H2(module.ToLower() + "不能识别的应用模块！");
+        //            }
+        //        }
 
-            }
-            else
-            {
-                CustomDesktopAlert.H2("应用程序加载模块出错！");
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        CustomDesktopAlert.H2("应用程序加载模块出错！");
+        //    }
+        //}
 
 
         /// <summary>
@@ -234,19 +242,30 @@ namespace GTMIS
 
         #endregion
 
-        private void buttonItem14_Click(object sender, EventArgs e)
+        private void ButtonDept_Click(object sender, EventArgs e)
         {
             SetMdiForm("机构管理", typeof(FrmOrganizationManager));
         }
 
+        private void ButtonPremission_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("权限管理", typeof(FrmDictManager));
+        }
 
-    }
-    public enum ModuleName
-    {
-        edi,
-        edi2,
-        ds9208_镜片,
-        ds9208_护理液,
-        checkmailstat,
+        private void ButtonRole_Click(object sender, EventArgs e)
+        {
+            CustomDesktopAlert.H2(typeof(FrmRoleManager).ToString());
+            SetMdiForm("角色管理", typeof(FrmRoleManager));
+        }
+
+        private void ButtonUser_Click(object sender, EventArgs e)
+        {
+            //SetMdiForm("用户管理", typeof(FrmRoleManager));
+        }
+
+        private void buttonItem14_Click(object sender, EventArgs e)
+        {
+            SetMdiForm("数据字典", typeof(FrmDictManager));
+        }
     }
 }

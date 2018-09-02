@@ -47,6 +47,8 @@
     <Compile Include="BLL_T_SysRolePremission.cs" />
     <Compile Include="BLL_T_SysUser.cs" />
     <Compile Include="BLL_T_SysUserRole.cs" />
+    <Compile Include="BLL_T_SysDictType.cs" />
+    <Compile Include="BLL_T_SysDictData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,11 +1,11 @@
 ﻿using DevComponents.DotNetBar;
-using System;
+using DevComponents.DotNetBar.Controls;
 using Ray.Framework.Config;
 using Ray.Framework.CustomDotNetBar;
+using System;
 using System.Data;
-using DevComponents.DotNetBar.Controls;
 
-namespace GTMIS
+namespace GTMIS.SystemAdmin.Organization
 {
     public partial class FrmOrganizationDetail : Office2007Form
     {
@@ -45,6 +45,9 @@ namespace GTMIS
             {
                 this.Text = "新建机构部门";
                 ButtonSave.Text = "保存";
+                TextBoxCreateBy.Text = "Admin";
+                TextBoxCreateDate.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+
                 BindComboBoxEx(ComboBoxParentId, bSysDept.GetAllList(), "FDeptName", "FParentId");
 
             }

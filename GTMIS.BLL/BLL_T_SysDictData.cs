@@ -1,30 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-
 namespace GTMIS.BLL
 {
-    //T_SysRole
-    public partial class BLL_T_SysRole
+    //T_SysDictData
+    public partial class BLL_T_SysDictData
     {
 
-        private readonly GTMIS.DAL.DAL_T_SysRole dal = new GTMIS.DAL.DAL_T_SysRole();
-        public BLL_T_SysRole()
+        private readonly GTMIS.DAL.DAL_T_SysDictData dal = new GTMIS.DAL.DAL_T_SysDictData();
+        public BLL_T_SysDictData()
         { }
 
         #region  Method
         /// <summary>
         /// 是否存在该记录
         /// </summary>
-        public bool Exists(int FRoleID)
+        public bool Exists(int FDictDataId)
         {
-            return dal.Exists(FRoleID);
+            return dal.Exists(FDictDataId);
         }
 
         /// <summary>
         /// 增加一条数据
         /// </summary>
-        public int Add(GTMIS.Model.T_SysRole model)
+        public int Add(GTMIS.Model.T_SysDictData model)
         {
             return dal.Add(model);
 
@@ -33,7 +32,7 @@ namespace GTMIS.BLL
         /// <summary>
         /// 更新一条数据
         /// </summary>
-        public bool Update(GTMIS.Model.T_SysRole model)
+        public bool Update(GTMIS.Model.T_SysDictData model)
         {
             return dal.Update(model);
         }
@@ -41,51 +40,51 @@ namespace GTMIS.BLL
         /// <summary>
         /// 删除一条数据
         /// </summary>
-        public bool Delete(int FRoleID)
+        public bool Delete(int FDictDataId)
         {
 
-            return dal.Delete(FRoleID);
+            return dal.Delete(FDictDataId);
         }
         /// <summary>
         /// 批量删除一批数据
         /// </summary>
-        public bool DeleteList(string FRoleIDlist)
+        public bool DeleteList(string FDictDataIdlist)
         {
-            return dal.DeleteList(FRoleIDlist);
+            return dal.DeleteList(FDictDataIdlist);
         }
 
         /// <summary>
         /// 得到一个对象实体
         /// </summary>
-        public GTMIS.Model.T_SysRole GetModel(int FRoleID)
+        public GTMIS.Model.T_SysDictData GetModel(int FDictDataId)
         {
 
-            return dal.GetModel(FRoleID);
+            return dal.GetModel(FDictDataId);
         }
 
-        /// <summary>
-        /// 得到一个对象实体，从缓存中
-        /// </summary>
-        ///public GTMIS.Model.T_SysRole GetModelByCache(int FRoleID)
-        ///{
-        ///	
-        ///	string CacheKey = "T_SysRoleModel-" + FRoleID;
-        ///	object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
-        ///	if (objModel == null)
-        ///	{
-        ///		try
-        ///		{
-        ///			objModel = dal.GetModel(FRoleID);
-        ///			if (objModel != null)
-        ///			{
-        ///				int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
-        ///				Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
-        ///			}
-        ///		}
-        ///		catch{}
-        ///	}
-        ///	return (GTMIS.Model.T_SysRole)objModel;
-        ///}
+        ///// <summary>
+        ///// 得到一个对象实体，从缓存中
+        ///// </summary>
+        //public GTMIS.Model.T_SysDictData GetModelByCache(int FDictDataId)
+        //{
+
+        //    string CacheKey = "T_SysDictDataModel-" + FDictDataId;
+        //    object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+        //    if (objModel == null)
+        //    {
+        //        try
+        //        {
+        //            objModel = dal.GetModel(FDictDataId);
+        //            if (objModel != null)
+        //            {
+        //                int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
+        //                Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+        //            }
+        //        }
+        //        catch { }
+        //    }
+        //    return (GTMIS.Model.T_SysDictData)objModel;
+        //}
 
         /// <summary>
         /// 获得数据列表
@@ -104,35 +103,39 @@ namespace GTMIS.BLL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public List<GTMIS.Model.T_SysRole> GetModelList(int Top, string strWhere, string filedOrder)
+        public List<GTMIS.Model.T_SysDictData> GetModelList(string strWhere)
         {
-            DataTable dt = dal.GetList(Top, strWhere, filedOrder);
+            DataTable dt = dal.GetList(strWhere);
             return DataTableToList(dt);
         }
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public List<GTMIS.Model.T_SysRole> DataTableToList(DataTable dt)
+        public List<GTMIS.Model.T_SysDictData> DataTableToList(DataTable dt)
         {
-            List<GTMIS.Model.T_SysRole> modelList = new List<GTMIS.Model.T_SysRole>();
+            List<GTMIS.Model.T_SysDictData> modelList = new List<GTMIS.Model.T_SysDictData>();
             int rowsCount = dt.Rows.Count;
             if (rowsCount > 0)
             {
-                GTMIS.Model.T_SysRole model;
+                GTMIS.Model.T_SysDictData model;
                 for (int n = 0; n < rowsCount; n++)
                 {
-                    model = new GTMIS.Model.T_SysRole();
-                    if (dt.Rows[n]["FRoleID"].ToString() != "")
+                    model = new GTMIS.Model.T_SysDictData();
+                    if (dt.Rows[n]["FDictDataId"].ToString() != "")
                     {
-                        model.FRoleID = int.Parse(dt.Rows[n]["FRoleID"].ToString());
+                        model.FDictDataId = int.Parse(dt.Rows[n]["FDictDataId"].ToString());
                     }
-                    model.FRoleName = dt.Rows[n]["FRoleName"].ToString();
-                    model.FRoleDesc = dt.Rows[n]["FRoleDesc"].ToString();
+                    if (dt.Rows[n]["FDictTypeId"].ToString() != "")
+                    {
+                        model.FDictTypeId = int.Parse(dt.Rows[n]["FDictTypeId"].ToString());
+                    }
+                    model.FDispName = dt.Rows[n]["FDispName"].ToString();
+                    model.FDictValue = dt.Rows[n]["FDictValue"].ToString();
+                    model.FCreateBy = dt.Rows[n]["FCreateBy"].ToString();
                     if (dt.Rows[n]["FCreateDate"].ToString() != "")
                     {
                         model.FCreateDate = DateTime.Parse(dt.Rows[n]["FCreateDate"].ToString());
                     }
-                    model.FCreateBy = dt.Rows[n]["FCreateBy"].ToString();
 
 
                     modelList.Add(model);
@@ -150,7 +153,7 @@ namespace GTMIS.BLL
         }
 
         /// <summary>
-        /// 
+        /// 调用分页过程，通用分页
         /// </summary>
         /// <param name="conn"></param>
         /// <param name="tableName"></param>
@@ -168,7 +171,7 @@ namespace GTMIS.BLL
         }
 
         /// <summary>
-        /// 
+        /// 得到指定条件下的记录数
         /// </summary>
         /// <param name="tableName"></param>
         /// <param name="queryCondition"></param>
@@ -179,13 +182,13 @@ namespace GTMIS.BLL
         }
 
         /// <summary>
-        /// 
+        ///  通过名称查询编号
         /// </summary>
-        /// <param name="deptName"></param>
+        /// <param name="nameField"></param>
         /// <returns></returns>
-        public int GetRoleIdByName(string roleName)
+        public int GetDeptIdByName(string nameField)
         {
-            return dal.GetRoleIdByName(roleName);
+            return dal.GetDeptIdByName(nameField);
         }
         #endregion
 
