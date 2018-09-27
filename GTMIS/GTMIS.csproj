@@ -103,6 +103,18 @@
     <Compile Include="SystemAdmin\Dict\FrmDictManager.Designer.cs">
       <DependentUpon>FrmDictManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="SystemAdmin\User\FrmUserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemAdmin\User\FrmUserDetail.Designer.cs">
+      <DependentUpon>FrmUserDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SystemAdmin\User\FrmUserManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemAdmin\User\FrmUserManager.Designer.cs">
+      <DependentUpon>FrmUserManager.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +150,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SystemAdmin\Dict\FrmDictManager.resx">
       <DependentUpon>FrmDictManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemAdmin\User\FrmUserDetail.resx">
+      <DependentUpon>FrmUserDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemAdmin\User\FrmUserManager.resx">
+      <DependentUpon>FrmUserManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -197,5 +215,6 @@
       <Name>Ray.Framework.WindowManage</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

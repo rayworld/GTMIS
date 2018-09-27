@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using GTMIS.SystemAdmin.Role;
 using GTMIS.SystemAdmin.Organization;
 using GTMIS.SystemAdmin.Dict;
+using GTMIS.SystemAdmin.User;
 
 
 namespace GTMIS
@@ -254,13 +255,12 @@ namespace GTMIS
 
         private void ButtonRole_Click(object sender, EventArgs e)
         {
-            CustomDesktopAlert.H2(typeof(FrmRoleManager).ToString());
             SetMdiForm("角色管理", typeof(FrmRoleManager));
         }
 
         private void ButtonUser_Click(object sender, EventArgs e)
         {
-            //SetMdiForm("用户管理", typeof(FrmRoleManager));
+            SetMdiForm("用户管理", typeof(FrmUserManager));
         }
 
         private void buttonItem14_Click(object sender, EventArgs e)

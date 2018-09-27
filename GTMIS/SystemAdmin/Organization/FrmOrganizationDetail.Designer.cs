@@ -172,7 +172,7 @@
             this.TextBoxCreateDate.Enabled = false;
             this.TextBoxCreateDate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TextBoxCreateDate.ForeColor = System.Drawing.Color.Black;
-            this.TextBoxCreateDate.Location = new System.Drawing.Point(156, 185);
+            this.TextBoxCreateDate.Location = new System.Drawing.Point(156, 182);
             this.TextBoxCreateDate.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxCreateDate.Name = "TextBoxCreateDate";
             this.TextBoxCreateDate.PreventEnterBeep = true;
@@ -187,7 +187,7 @@
             this.ComboBoxParentId.ForeColor = System.Drawing.Color.Black;
             this.ComboBoxParentId.FormattingEnabled = true;
             this.ComboBoxParentId.ItemHeight = 30;
-            this.ComboBoxParentId.Location = new System.Drawing.Point(156, 64);
+            this.ComboBoxParentId.Location = new System.Drawing.Point(156, 61);
             this.ComboBoxParentId.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxParentId.Name = "ComboBoxParentId";
             this.ComboBoxParentId.Size = new System.Drawing.Size(318, 36);
@@ -275,14 +275,14 @@
             this.TextBoxOrder.DisabledBackColor = System.Drawing.Color.White;
             this.TextBoxOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TextBoxOrder.ForeColor = System.Drawing.Color.Black;
-            this.TextBoxOrder.Location = new System.Drawing.Point(156, 105);
+            this.TextBoxOrder.Location = new System.Drawing.Point(156, 108);
             this.TextBoxOrder.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxOrder.Name = "TextBoxOrder";
             this.TextBoxOrder.PreventEnterBeep = true;
             this.TextBoxOrder.Size = new System.Drawing.Size(317, 26);
             this.TextBoxOrder.TabIndex = 14;
             // 
-            // FrmRoleDetail
+            // FrmOrganizationDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -301,7 +301,7 @@
             this.DoubleBuffered = true;
             this.EnableGlass = false;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FrmRoleDetail";
+            this.Name = "FrmOrganizationDetail";
             this.Text = "FrmOrganizationDetail";
             this.Load += new System.EventHandler(this.FrmOrganizationDetail_Load);
             this.panelEx1.ResumeLayout(false);

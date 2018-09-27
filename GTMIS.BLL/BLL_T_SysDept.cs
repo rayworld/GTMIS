@@ -104,9 +104,9 @@ namespace GTMIS.BLL
         /// <summary>
         /// 获得数据列表
         /// </summary>
-        public List<GTMIS.Model.T_SysDept> GetModelList(int Top, string strWhere, string filedOrder)
+        public List<GTMIS.Model.T_SysDept> GetModelList(string strWhere)
         {
-            DataTable dt = dal.GetList(Top, strWhere, filedOrder);
+            DataTable dt = dal.GetList(strWhere);
             return DataTableToList(dt);
         }
         /// <summary>

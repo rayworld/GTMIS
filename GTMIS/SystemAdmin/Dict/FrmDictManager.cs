@@ -28,7 +28,7 @@ namespace GTMIS.SystemAdmin.Dict
         private static string modelName = "T_SysDictData";
         private static string primaryKey = "FDictDataId";
         private static string columnList = "[FDictDataId] AS 条目编号,[FDispName] AS 显示为 ,[FDictValue] AS 实际值 ,[FCreateBy] AS 创建者 ,[FCreateDate] AS 创建时间";
-        private static int pageSize = 2;
+        private static int pageSize = 50;
         //private static int maxRecCount = 100;
 
         /// <summary>
@@ -66,7 +66,6 @@ namespace GTMIS.SystemAdmin.Dict
             {
                 CustomDesktopAlert.H2("无数据");
             }
-
         }
 
         /// <summary>
@@ -130,14 +129,30 @@ namespace GTMIS.SystemAdmin.Dict
             DataGridViewX1.DataSource = bllSysDictData.GetListByPage(modelName, primaryKey, pager2.PageIndex, pager2.PageSize, "", columnList, queryCondition, queryGroup);
 
             //清空默认表格的选择
-            DataGridViewX1.Rows[0].Selected = false;
-
+            if (DataGridViewX1.Rows.Count > 0)
+            {
+                DataGridViewX1.Rows[0].Selected = false;
+            }
         }
-
-
         #endregion
 
         #region 表格控件
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DataGridViewX1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ButtonEdit_Click(null, null);
+        }
+
+        /// <summary>
+        /// 格式化日期列
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridViewX1_CellFormatting(object sender, System.Windows.Forms.DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == DataGridViewX1.Columns["创建时间"].Index)   //格式化日期
@@ -282,5 +297,40 @@ namespace GTMIS.SystemAdmin.Dict
             }
         }
         #endregion
+
+        #region 右键菜单
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonItemDelete_Click(object sender, EventArgs e)
+        {
+            ButtonDelete_Click(null,null);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonItemEdit_Click(object sender, EventArgs e)
+        {
+            ButtonEdit_Click(null, null);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonItemInsert_Click(object sender, EventArgs e)
+        {
+            ButtonInsert_Click(null, null);
+        }
+
+        #endregion
+
     }
 }

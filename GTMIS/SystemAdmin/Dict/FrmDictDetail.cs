@@ -70,7 +70,7 @@ namespace GTMIS.SystemAdmin.Dict
         {
             mSysDictData = new T_SysDictData()
             {
-                FDispName = TextBoxDeptName.Text,
+                FDispName = TextBoxDeptName.Text.Trim(),
                 FDictValue = TextBoxOrder.Text,
                 FDictTypeId = DictTypeId,
                 FCreateBy = TextBoxCreateBy.Text,

@@ -39,7 +39,7 @@ namespace GTMIS.SystemAdmin.Organization
             this.expandableSplitter1 = new DevComponents.DotNetBar.ExpandableSplitter();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.DataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.chkSelect = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.pager2 = new GTMIS.Controls.Pager();
             this.panelEx2 = new DevComponents.DotNetBar.PanelEx();
             this.ButtonClean = new DevComponents.DotNetBar.ButtonX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
@@ -49,7 +49,6 @@ namespace GTMIS.SystemAdmin.Organization
             this.ButtonQuery = new DevComponents.DotNetBar.ButtonX();
             this.TextBoxX_QueryString = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.pager2 = new GTMIS.Controls.Pager();
             ((System.ComponentModel.ISupportInitialize)(this.advTree1)).BeginInit();
             this.panelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewX1)).BeginInit();
@@ -162,8 +161,6 @@ namespace GTMIS.SystemAdmin.Organization
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewX1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.chkSelect});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -196,14 +193,17 @@ namespace GTMIS.SystemAdmin.Organization
             this.DataGridViewX1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewX1_CellFormatting);
             this.DataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGridViewX1_DataBindingComplete);
             // 
-            // chkSelect
+            // pager2
             // 
-            this.chkSelect.DataPropertyName = "IsChecked";
-            this.chkSelect.HeaderText = "";
-            this.chkSelect.Name = "chkSelect";
-            this.chkSelect.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.chkSelect.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.chkSelect.Width = 40;
+            this.pager2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pager2.Location = new System.Drawing.Point(0, 423);
+            this.pager2.Margin = new System.Windows.Forms.Padding(1);
+            this.pager2.Name = "pager2";
+            this.pager2.PageIndex = 1;
+            this.pager2.PageSize = 10;
+            this.pager2.RecCount = 0;
+            this.pager2.Size = new System.Drawing.Size(1010, 47);
+            this.pager2.TabIndex = 5;
             // 
             // panelEx2
             // 
@@ -346,18 +346,6 @@ namespace GTMIS.SystemAdmin.Organization
             this.labelX1.TabIndex = 0;
             this.labelX1.Text = "部门名称：";
             // 
-            // pager2
-            // 
-            this.pager2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pager2.Location = new System.Drawing.Point(0, 423);
-            this.pager2.Margin = new System.Windows.Forms.Padding(1);
-            this.pager2.Name = "pager2";
-            this.pager2.PageIndex = 1;
-            this.pager2.PageSize = 10;
-            this.pager2.RecCount = 0;
-            this.pager2.Size = new System.Drawing.Size(1010, 47);
-            this.pager2.TabIndex = 5;
-            // 
             // FrmOrganizationManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -388,7 +376,6 @@ namespace GTMIS.SystemAdmin.Organization
         private DevComponents.DotNetBar.ExpandableSplitter expandableSplitter1;
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.DotNetBar.Controls.DataGridViewX DataGridViewX1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn chkSelect;
         private DevComponents.DotNetBar.PanelEx panelEx2;
         private DevComponents.DotNetBar.Controls.TextBoxX TextBoxX_QueryString;
         private DevComponents.DotNetBar.LabelX labelX1;

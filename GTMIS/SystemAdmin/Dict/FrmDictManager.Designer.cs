@@ -47,11 +47,17 @@
             this.advTree1 = new DevComponents.AdvTree.AdvTree();
             this.nodeConnector1 = new DevComponents.AdvTree.NodeConnector();
             this.elementStyle1 = new DevComponents.DotNetBar.ElementStyle();
+            this.contextMenuBar1 = new DevComponents.DotNetBar.ContextMenuBar();
+            this.buttonItem1 = new DevComponents.DotNetBar.ButtonItem();
+            this.ButtonItemEdit = new DevComponents.DotNetBar.ButtonItem();
+            this.ButtonItemDelete = new DevComponents.DotNetBar.ButtonItem();
+            this.ButtonItemInsert = new DevComponents.DotNetBar.ButtonItem();
             this.panelEx3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewX1)).BeginInit();
             this.panelEx1.SuspendLayout();
             this.panelEx2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.advTree1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // ButtonQuery
@@ -79,7 +85,7 @@
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(91, 31);
             this.labelX1.TabIndex = 0;
-            this.labelX1.Text = "部门名称：";
+            this.labelX1.Text = "条目名称：";
             // 
             // ButtonDelete
             // 
@@ -186,6 +192,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DataGridViewX1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.contextMenuBar1.SetContextMenuEx(this.DataGridViewX1, this.buttonItem1);
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -214,6 +221,7 @@
             this.DataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewX1.Size = new System.Drawing.Size(933, 346);
             this.DataGridViewX1.TabIndex = 0;
+            this.DataGridViewX1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewX1_CellDoubleClick);
             this.DataGridViewX1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewX1_CellFormatting);
             this.DataGridViewX1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DataGridViewX1_DataBindingComplete);
             // 
@@ -221,6 +229,7 @@
             // 
             this.panelEx1.CanvasColor = System.Drawing.SystemColors.Control;
             this.panelEx1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.panelEx1.Controls.Add(this.contextMenuBar1);
             this.panelEx1.Controls.Add(this.DataGridViewX1);
             this.panelEx1.Controls.Add(this.pager2);
             this.panelEx1.Controls.Add(this.panelEx2);
@@ -344,6 +353,51 @@
             this.elementStyle1.Name = "elementStyle1";
             this.elementStyle1.TextColor = System.Drawing.SystemColors.ControlText;
             // 
+            // contextMenuBar1
+            // 
+            this.contextMenuBar1.AntiAlias = true;
+            this.contextMenuBar1.DockSide = DevComponents.DotNetBar.eDockSide.Document;
+            this.contextMenuBar1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
+            this.contextMenuBar1.IsMaximized = false;
+            this.contextMenuBar1.Items.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.buttonItem1});
+            this.contextMenuBar1.Location = new System.Drawing.Point(148, 146);
+            this.contextMenuBar1.Name = "contextMenuBar1";
+            this.contextMenuBar1.Size = new System.Drawing.Size(125, 27);
+            this.contextMenuBar1.Stretch = true;
+            this.contextMenuBar1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.contextMenuBar1.TabIndex = 9;
+            this.contextMenuBar1.TabStop = false;
+            this.contextMenuBar1.Text = "contextMenuBar1";
+            // 
+            // buttonItem1
+            // 
+            this.buttonItem1.AutoExpandOnClick = true;
+            this.buttonItem1.Name = "buttonItem1";
+            this.buttonItem1.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
+            this.ButtonItemInsert,
+            this.ButtonItemEdit,
+            this.ButtonItemDelete});
+            this.buttonItem1.Text = "右键菜单";
+            // 
+            // ButtonItemEdit
+            // 
+            this.ButtonItemEdit.Name = "ButtonItemEdit";
+            this.ButtonItemEdit.Text = "编辑(&E)";
+            this.ButtonItemEdit.Click += new System.EventHandler(this.ButtonItemEdit_Click);
+            // 
+            // ButtonItemDelete
+            // 
+            this.ButtonItemDelete.Name = "ButtonItemDelete";
+            this.ButtonItemDelete.Text = "删除(&D)";
+            this.ButtonItemDelete.Click += new System.EventHandler(this.ButtonItemDelete_Click);
+            // 
+            // ButtonItemInsert
+            // 
+            this.ButtonItemInsert.Name = "ButtonItemInsert";
+            this.ButtonItemInsert.Text = "新建(&N)";
+            this.ButtonItemInsert.Click += new System.EventHandler(this.ButtonItemInsert_Click);
+            // 
             // FrmDictManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -362,6 +416,7 @@
             this.panelEx1.ResumeLayout(false);
             this.panelEx2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.advTree1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contextMenuBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -384,5 +439,10 @@
         private DevComponents.AdvTree.AdvTree advTree1;
         private DevComponents.AdvTree.NodeConnector nodeConnector1;
         private DevComponents.DotNetBar.ElementStyle elementStyle1;
+        private DevComponents.DotNetBar.ContextMenuBar contextMenuBar1;
+        private DevComponents.DotNetBar.ButtonItem buttonItem1;
+        private DevComponents.DotNetBar.ButtonItem ButtonItemEdit;
+        private DevComponents.DotNetBar.ButtonItem ButtonItemInsert;
+        private DevComponents.DotNetBar.ButtonItem ButtonItemDelete;
     }
 }

@@ -19,17 +19,13 @@ namespace GTMIS.Model
         /// </summary>		
         public string FPassword { get; set; }
         /// <summary>
-        /// FRowID
+        /// FRoleID
         /// </summary>		
-        public int FRowID { get; set; }
+        public int FRoleID { get; set; }
         /// <summary>
         /// FDeptID
         /// </summary>		
         public int FDeptID { get; set; }
-        /// <summary>
-        /// FTitleID
-        /// </summary>		
-        public int FTitleID { get; set; }
         /// <summary>
         /// CreateBy
         /// </summary>		

@@ -42,17 +42,16 @@ namespace GTMIS.DAL
         {
             StringBuilder strSql = new StringBuilder();
             strSql.Append("insert into T_SysUser(");
-            strSql.Append("FUserName,FPassword,FRowID,FDeptID,FTitleID,CreateBy,CreateDate");
+            strSql.Append("FUserName,FPassword,FRoleID,FDeptID,CreateBy,CreateDate");
             strSql.Append(") values (");
-            strSql.Append("@FUserName,@FPassword,@FRowID,@FDeptID,@FTitleID,@CreateBy,@CreateDate");
+            strSql.Append("@FUserName,@FPassword,@FRoleID,@FDeptID,@CreateBy,@CreateDate");
             strSql.Append(") ");
             strSql.Append(";select @@IDENTITY");
             SqlParameter[] parameters = {
                         new SqlParameter("@FUserName", SqlDbType.NVarChar,50) ,
                         new SqlParameter("@FPassword", SqlDbType.NVarChar,50) ,
-                        new SqlParameter("@FRowID", SqlDbType.Int,4) ,
+                        new SqlParameter("@FRoleID", SqlDbType.Int,4) ,
                         new SqlParameter("@FDeptID", SqlDbType.Int,4) ,
-                        new SqlParameter("@FTitleID", SqlDbType.Int,4) ,
                         new SqlParameter("@CreateBy", SqlDbType.NVarChar,50) ,
                         new SqlParameter("@CreateDate", SqlDbType.DateTime)
 
@@ -60,11 +59,10 @@ namespace GTMIS.DAL
 
             parameters[0].Value = model.FUserName;
             parameters[1].Value = model.FPassword;
-            parameters[2].Value = model.FRowID;
+            parameters[2].Value = model.FRoleID;
             parameters[3].Value = model.FDeptID;
-            parameters[4].Value = model.FTitleID;
-            parameters[5].Value = model.CreateBy;
-            parameters[6].Value = model.CreateDate;
+            parameters[4].Value = model.CreateBy;
+            parameters[5].Value = model.CreateDate;
 
             //object obj = DbHelperSQL.GetSingle(strSql.ToString(),parameters);
             object obj = SqlHelper.ExecuteScalar(conn, strSql.ToString(), parameters);
@@ -93,9 +91,8 @@ namespace GTMIS.DAL
 
             strSql.Append(" FUserName = @FUserName , ");
             strSql.Append(" FPassword = @FPassword , ");
-            strSql.Append(" FRowID = @FRowID , ");
+            strSql.Append(" FRoleID = @FRoleID , ");
             strSql.Append(" FDeptID = @FDeptID , ");
-            strSql.Append(" FTitleID = @FTitleID , ");
             strSql.Append(" CreateBy = @CreateBy , ");
             strSql.Append(" CreateDate = @CreateDate  ");
             strSql.Append(" where FUserID=@FUserID ");
@@ -104,9 +101,8 @@ namespace GTMIS.DAL
                         new SqlParameter("@FUserID", SqlDbType.Int,4) ,
                         new SqlParameter("@FUserName", SqlDbType.NVarChar,50) ,
                         new SqlParameter("@FPassword", SqlDbType.NVarChar,50) ,
-                        new SqlParameter("@FRowID", SqlDbType.Int,4) ,
+                        new SqlParameter("@FRoleID", SqlDbType.Int,4) ,
                         new SqlParameter("@FDeptID", SqlDbType.Int,4) ,
-                        new SqlParameter("@FTitleID", SqlDbType.Int,4) ,
                         new SqlParameter("@CreateBy", SqlDbType.NVarChar,50) ,
                         new SqlParameter("@CreateDate", SqlDbType.DateTime)
 
@@ -115,11 +111,10 @@ namespace GTMIS.DAL
             parameters[0].Value = model.FUserID;
             parameters[1].Value = model.FUserName;
             parameters[2].Value = model.FPassword;
-            parameters[3].Value = model.FRowID;
+            parameters[3].Value = model.FRoleID;
             parameters[4].Value = model.FDeptID;
-            parameters[5].Value = model.FTitleID;
-            parameters[6].Value = model.CreateBy;
-            parameters[7].Value = model.CreateDate;
+            parameters[5].Value = model.CreateBy;
+            parameters[6].Value = model.CreateDate;
             //int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
             int rows = SqlHelper.ExecuteNonQuery(conn, strSql.ToString(), parameters);
 
@@ -191,7 +186,7 @@ namespace GTMIS.DAL
         {
 
             StringBuilder strSql = new StringBuilder();
-            strSql.Append("select FUserID, FUserName, FPassword, FRowID, FDeptID, FTitleID, CreateBy, CreateDate  ");
+            strSql.Append("select FUserID, FUserName, FPassword, FRoleID, FDeptID, CreateBy, CreateDate  ");
             strSql.Append("  from T_SysUser ");
             strSql.Append(" where FUserID=@FUserID");
             SqlParameter[] parameters = {
@@ -212,17 +207,13 @@ namespace GTMIS.DAL
                 }
                 model.FUserName = dt.Rows[0]["FUserName"].ToString();
                 model.FPassword = dt.Rows[0]["FPassword"].ToString();
-                if (dt.Rows[0]["FRowID"].ToString() != "")
+                if (dt.Rows[0]["FRoleID"].ToString() != "")
                 {
-                    model.FRowID = int.Parse(dt.Rows[0]["FRowID"].ToString());
+                    model.FRoleID = int.Parse(dt.Rows[0]["FRoleID"].ToString());
                 }
                 if (dt.Rows[0]["FDeptID"].ToString() != "")
                 {
                     model.FDeptID = int.Parse(dt.Rows[0]["FDeptID"].ToString());
-                }
-                if (dt.Rows[0]["FTitleID"].ToString() != "")
-                {
-                    model.FTitleID = int.Parse(dt.Rows[0]["FTitleID"].ToString());
                 }
                 model.CreateBy = dt.Rows[0]["CreateBy"].ToString();
                 if (dt.Rows[0]["CreateDate"].ToString() != "")
@@ -276,5 +267,88 @@ namespace GTMIS.DAL
             //return DbHelperSQL.Query(strSql.ToString());
             return SqlHelper.ExecuteDataTable(conn, strSql.ToString());
         }
+
+        /// <summary>
+        /// 调用分页过程，通用分页
+        /// </summary>
+        /// <param name="Conn"></param>
+        /// <param name="tableName"></param>
+        /// <param name="primaryKey"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="queryOrder"></param>
+        /// <param name="queryFieldName"></param>
+        /// <param name="queryCondition"></param>
+        /// <param name="queryGroup"></param>
+        /// <returns></returns>
+        public DataTable GetListByPage(string tableName,
+            string primaryKey,
+            int pageIndex,
+            int pageSize,
+            string queryOrder,
+            string queryFieldName,
+            string queryCondition,
+            string queryGroup)
+        {
+            SqlParameter[] parameters = {
+                    new SqlParameter("@Tables", SqlDbType.VarChar, 255),
+                    new SqlParameter("@PrimaryKey" , SqlDbType.VarChar , 255),
+                    new SqlParameter("@Sort", SqlDbType.VarChar , 255 ),
+                    new SqlParameter("@CurrentPage", SqlDbType.Int),
+                    new SqlParameter("@PageSize", SqlDbType.Int),
+                    new SqlParameter("@Fields", SqlDbType.VarChar, 255),
+                    new SqlParameter("@Filter", SqlDbType.VarChar,1000),
+                    new SqlParameter("@Group" ,SqlDbType.VarChar , 1000 )
+                    };
+            parameters[0].Value = tableName;
+            parameters[1].Value = primaryKey;
+            parameters[2].Value = queryOrder;
+            parameters[3].Value = pageIndex;
+            parameters[4].Value = pageSize;
+            parameters[5].Value = queryFieldName;
+            parameters[6].Value = queryCondition;
+            parameters[7].Value = queryGroup;
+            DataTable dt = SqlHelper.ExecuteDataSet(conn, CommandType.StoredProcedure, "SP_Pagination", parameters).Tables[0];
+
+            return dt;
+        }
+
+        /// <summary>
+        /// 得到指定条件下的记录数
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <param name="queryCondition"></param>
+        /// <returns></returns>
+        public int GetRecCount(string tableName, string queryCondition)
+        {
+            string strSql = " SELECT COUNT(1) FROM " + tableName;
+            if (queryCondition != string.Empty)
+            {
+                strSql += " WHERE " + queryCondition;
+            }
+            return int.Parse(SqlHelper.ExecuteScalar(conn, strSql).ToString());
+        }
+
+        /// <summary>
+        /// 通过名称查询编号
+        /// </summary>
+        /// <param name="deptName">实体名称列</param>
+        /// <returns></returns>
+        public int GetDeptIdByName(string nameField)
+        {
+            string strSql = String.Format(" Select FDeptId From T_SysDept Where [FDeptName] = '{0}' ", nameField);
+
+            object obj = SqlHelper.ExecuteScalar(conn, strSql).ToString();
+
+            if (obj != null && !string.IsNullOrEmpty(obj.ToString()))
+            {
+                return int.Parse(obj.ToString());
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
+

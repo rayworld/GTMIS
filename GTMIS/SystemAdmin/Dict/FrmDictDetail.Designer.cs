@@ -29,40 +29,22 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.TextBoxDeptName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx1 = new DevComponents.DotNetBar.PanelEx();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.ButtonCancel = new DevComponents.DotNetBar.ButtonX();
             this.ButtonSave = new DevComponents.DotNetBar.ButtonX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
-            this.TextBoxCreateBy = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.TextBoxCreateDate = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.labelX3 = new DevComponents.DotNetBar.LabelX();
-            this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.TextBoxOrder = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
+            this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.labelX3 = new DevComponents.DotNetBar.LabelX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.TextBoxCreateDate = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.TextBoxCreateBy = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.TextBoxDeptName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.panelEx1.SuspendLayout();
             this.panelEx3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // TextBoxDeptName
-            // 
-            this.TextBoxDeptName.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.TextBoxDeptName.Border.Class = "TextBoxBorder";
-            this.TextBoxDeptName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TextBoxDeptName.DisabledBackColor = System.Drawing.Color.White;
-            this.TextBoxDeptName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxDeptName.ForeColor = System.Drawing.Color.Black;
-            this.TextBoxDeptName.Location = new System.Drawing.Point(156, 24);
-            this.TextBoxDeptName.Margin = new System.Windows.Forms.Padding(2);
-            this.TextBoxDeptName.Name = "TextBoxDeptName";
-            this.TextBoxDeptName.PreventEnterBeep = true;
-            this.TextBoxDeptName.Size = new System.Drawing.Size(317, 26);
-            this.TextBoxDeptName.TabIndex = 0;
             // 
             // panelEx1
             // 
@@ -71,10 +53,10 @@
             this.panelEx1.Controls.Add(this.panelEx3);
             this.panelEx1.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelEx1.Location = new System.Drawing.Point(0, 242);
+            this.panelEx1.Location = new System.Drawing.Point(0, 218);
             this.panelEx1.Margin = new System.Windows.Forms.Padding(2);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(504, 47);
+            this.panelEx1.Size = new System.Drawing.Size(535, 47);
             this.panelEx1.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.panelEx1.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.panelEx1.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
@@ -91,7 +73,7 @@
             this.panelEx3.Controls.Add(this.ButtonSave);
             this.panelEx3.DisabledBackColor = System.Drawing.Color.Empty;
             this.panelEx3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelEx3.Location = new System.Drawing.Point(261, 0);
+            this.panelEx3.Location = new System.Drawing.Point(292, 0);
             this.panelEx3.Margin = new System.Windows.Forms.Padding(2);
             this.panelEx3.Name = "panelEx3";
             this.panelEx3.Size = new System.Drawing.Size(243, 47);
@@ -139,24 +121,79 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Office2016;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255))))), System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(115)))), ((int)(((byte)(199))))));
             // 
-            // TextBoxCreateBy
+            // TextBoxOrder
             // 
-            this.TextBoxCreateBy.BackColor = System.Drawing.Color.White;
+            this.TextBoxOrder.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
-            this.TextBoxCreateBy.Border.Class = "TextBoxBorder";
-            this.TextBoxCreateBy.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TextBoxCreateBy.DisabledBackColor = System.Drawing.Color.White;
-            this.TextBoxCreateBy.Enabled = false;
-            this.TextBoxCreateBy.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxCreateBy.ForeColor = System.Drawing.Color.Black;
-            this.TextBoxCreateBy.Location = new System.Drawing.Point(156, 105);
-            this.TextBoxCreateBy.Margin = new System.Windows.Forms.Padding(2);
-            this.TextBoxCreateBy.Name = "TextBoxCreateBy";
-            this.TextBoxCreateBy.PreventEnterBeep = true;
-            this.TextBoxCreateBy.Size = new System.Drawing.Size(317, 26);
-            this.TextBoxCreateBy.TabIndex = 6;
+            this.TextBoxOrder.Border.Class = "TextBoxBorder";
+            this.TextBoxOrder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.TextBoxOrder.DisabledBackColor = System.Drawing.Color.White;
+            this.TextBoxOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TextBoxOrder.ForeColor = System.Drawing.Color.Black;
+            this.TextBoxOrder.Location = new System.Drawing.Point(171, 73);
+            this.TextBoxOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxOrder.Name = "TextBoxOrder";
+            this.TextBoxOrder.PreventEnterBeep = true;
+            this.TextBoxOrder.Size = new System.Drawing.Size(317, 26);
+            this.TextBoxOrder.TabIndex = 34;
+            // 
+            // labelX5
+            // 
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX5.Location = new System.Drawing.Point(42, 152);
+            this.labelX5.Margin = new System.Windows.Forms.Padding(2);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(103, 16);
+            this.labelX5.TabIndex = 33;
+            this.labelX5.Text = "创建时间";
+            // 
+            // labelX4
+            // 
+            // 
+            // 
+            // 
+            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX4.Location = new System.Drawing.Point(42, 112);
+            this.labelX4.Margin = new System.Windows.Forms.Padding(2);
+            this.labelX4.Name = "labelX4";
+            this.labelX4.Size = new System.Drawing.Size(103, 16);
+            this.labelX4.TabIndex = 32;
+            this.labelX4.Text = "创建人";
+            // 
+            // labelX3
+            // 
+            // 
+            // 
+            // 
+            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX3.Location = new System.Drawing.Point(42, 72);
+            this.labelX3.Margin = new System.Windows.Forms.Padding(2);
+            this.labelX3.Name = "labelX3";
+            this.labelX3.Size = new System.Drawing.Size(103, 16);
+            this.labelX3.TabIndex = 31;
+            this.labelX3.Text = "实际值";
+            // 
+            // labelX1
+            // 
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX1.Location = new System.Drawing.Point(42, 32);
+            this.labelX1.Margin = new System.Windows.Forms.Padding(2);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(103, 16);
+            this.labelX1.TabIndex = 30;
+            this.labelX1.Text = "显示为";
             // 
             // TextBoxCreateDate
             // 
@@ -170,92 +207,55 @@
             this.TextBoxCreateDate.Enabled = false;
             this.TextBoxCreateDate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TextBoxCreateDate.ForeColor = System.Drawing.Color.Black;
-            this.TextBoxCreateDate.Location = new System.Drawing.Point(156, 145);
+            this.TextBoxCreateDate.Location = new System.Drawing.Point(171, 153);
             this.TextBoxCreateDate.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxCreateDate.Name = "TextBoxCreateDate";
             this.TextBoxCreateDate.PreventEnterBeep = true;
             this.TextBoxCreateDate.Size = new System.Drawing.Size(317, 26);
-            this.TextBoxCreateDate.TabIndex = 7;
+            this.TextBoxCreateDate.TabIndex = 29;
             // 
-            // labelX1
+            // TextBoxCreateBy
             // 
-            // 
-            // 
-            // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX1.Location = new System.Drawing.Point(27, 24);
-            this.labelX1.Margin = new System.Windows.Forms.Padding(2);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(103, 16);
-            this.labelX1.TabIndex = 9;
-            this.labelX1.Text = "角色名称";
-            // 
-            // labelX3
+            this.TextBoxCreateBy.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
+            this.TextBoxCreateBy.Border.Class = "TextBoxBorder";
+            this.TextBoxCreateBy.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.TextBoxCreateBy.DisabledBackColor = System.Drawing.Color.White;
+            this.TextBoxCreateBy.Enabled = false;
+            this.TextBoxCreateBy.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TextBoxCreateBy.ForeColor = System.Drawing.Color.Black;
+            this.TextBoxCreateBy.Location = new System.Drawing.Point(171, 113);
+            this.TextBoxCreateBy.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxCreateBy.Name = "TextBoxCreateBy";
+            this.TextBoxCreateBy.PreventEnterBeep = true;
+            this.TextBoxCreateBy.Size = new System.Drawing.Size(317, 26);
+            this.TextBoxCreateBy.TabIndex = 28;
             // 
-            this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX3.Location = new System.Drawing.Point(27, 64);
-            this.labelX3.Margin = new System.Windows.Forms.Padding(2);
-            this.labelX3.Name = "labelX3";
-            this.labelX3.Size = new System.Drawing.Size(103, 16);
-            this.labelX3.TabIndex = 11;
-            this.labelX3.Text = "描述";
+            // TextBoxDeptName
             // 
-            // labelX4
-            // 
-            // 
-            // 
-            // 
-            this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX4.Location = new System.Drawing.Point(27, 104);
-            this.labelX4.Margin = new System.Windows.Forms.Padding(2);
-            this.labelX4.Name = "labelX4";
-            this.labelX4.Size = new System.Drawing.Size(103, 16);
-            this.labelX4.TabIndex = 12;
-            this.labelX4.Text = "创建人";
-            // 
-            // labelX5
+            this.TextBoxDeptName.BackColor = System.Drawing.Color.White;
             // 
             // 
             // 
+            this.TextBoxDeptName.Border.Class = "TextBoxBorder";
+            this.TextBoxDeptName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.TextBoxDeptName.DisabledBackColor = System.Drawing.Color.White;
+            this.TextBoxDeptName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TextBoxDeptName.ForeColor = System.Drawing.Color.Black;
+            this.TextBoxDeptName.Location = new System.Drawing.Point(171, 32);
+            this.TextBoxDeptName.Margin = new System.Windows.Forms.Padding(2);
+            this.TextBoxDeptName.Name = "TextBoxDeptName";
+            this.TextBoxDeptName.PreventEnterBeep = true;
+            this.TextBoxDeptName.Size = new System.Drawing.Size(317, 26);
+            this.TextBoxDeptName.TabIndex = 27;
             // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX5.Location = new System.Drawing.Point(27, 144);
-            this.labelX5.Margin = new System.Windows.Forms.Padding(2);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(103, 16);
-            this.labelX5.TabIndex = 13;
-            this.labelX5.Text = "创建时间";
-            // 
-            // TextBoxOrder
-            // 
-            this.TextBoxOrder.BackColor = System.Drawing.Color.White;
-            // 
-            // 
-            // 
-            this.TextBoxOrder.Border.Class = "TextBoxBorder";
-            this.TextBoxOrder.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.TextBoxOrder.DisabledBackColor = System.Drawing.Color.White;
-            this.TextBoxOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TextBoxOrder.ForeColor = System.Drawing.Color.Black;
-            this.TextBoxOrder.Location = new System.Drawing.Point(156, 65);
-            this.TextBoxOrder.Margin = new System.Windows.Forms.Padding(2);
-            this.TextBoxOrder.Name = "TextBoxOrder";
-            this.TextBoxOrder.PreventEnterBeep = true;
-            this.TextBoxOrder.Size = new System.Drawing.Size(317, 26);
-            this.TextBoxOrder.TabIndex = 14;
-            // 
-            // FrmRoleDetail
+            // FrmDictDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 289);
+            this.ClientSize = new System.Drawing.Size(535, 265);
             this.Controls.Add(this.TextBoxOrder);
             this.Controls.Add(this.labelX5);
             this.Controls.Add(this.labelX4);
@@ -263,12 +263,12 @@
             this.Controls.Add(this.labelX1);
             this.Controls.Add(this.TextBoxCreateDate);
             this.Controls.Add(this.TextBoxCreateBy);
-            this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.TextBoxDeptName);
+            this.Controls.Add(this.panelEx1);
             this.DoubleBuffered = true;
             this.EnableGlass = false;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FrmRoleDetail";
+            this.Name = "FrmDictDetail";
             this.Text = "FrmOrganizationDetail";
             this.Load += new System.EventHandler(this.FrmOrganizationDetail_Load);
             this.panelEx1.ResumeLayout(false);
@@ -278,19 +278,18 @@
         }
 
         #endregion
-
-        private DevComponents.DotNetBar.Controls.TextBoxX TextBoxDeptName;
         private DevComponents.DotNetBar.PanelEx panelEx1;
         private DevComponents.DotNetBar.PanelEx panelEx3;
         private DevComponents.DotNetBar.ButtonX ButtonCancel;
         private DevComponents.DotNetBar.ButtonX ButtonSave;
         private DevComponents.DotNetBar.StyleManager styleManager1;
-        private DevComponents.DotNetBar.Controls.TextBoxX TextBoxCreateBy;
-        private DevComponents.DotNetBar.Controls.TextBoxX TextBoxCreateDate;
-        private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.LabelX labelX3;
-        private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.Controls.TextBoxX TextBoxOrder;
+        private DevComponents.DotNetBar.LabelX labelX5;
+        private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.LabelX labelX3;
+        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX TextBoxCreateDate;
+        private DevComponents.DotNetBar.Controls.TextBoxX TextBoxCreateBy;
+        private DevComponents.DotNetBar.Controls.TextBoxX TextBoxDeptName;
     }
 }
